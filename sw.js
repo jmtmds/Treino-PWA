@@ -1,7 +1,9 @@
-const CACHE_NAME = 'treino-glm-v1';
+const CACHE_NAME = 'treino-glm-v3';
 const ASSETS = [
   './',
   './index.html',
+  './css/style.css',
+  './js/app.js',
   './manifest.json',
   './icons/apple-touch-icon.png',
   './icons/icon-192.png',
