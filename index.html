@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Folha de Estilo Modular -->
+<!-- Estilos Modulares -->
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -39,7 +39,7 @@
 
 <nav><div class="wrap">
   <a href="#semana">Sua semana</a>
-  <a href="#analise">Análise</a>
+  <a href="#analise">Diário</a>
   <a href="#treino">Treino</a>
   <a href="#progressao">Progressão</a>
   <a href="#dieta">Dieta</a>
@@ -67,41 +67,40 @@
   <div class="note attn"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve (ritmo em que você consegue conversar). Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai. Se aparecerem, corte 1–2 séries por dia ou pule a corrida da semana. A cada 3–4 semanas, um domingo de descanso total faz bem.</div>
 </section>
 
-<!-- ========== ANÁLISE ========== -->
+<!-- ========== 02: DIÁRIO & ANÁLISE DO TREINO (NOVA VERSÃO) ========== -->
 <section id="analise">
-  <div class="sechead"><span class="secnum">02</span><h2>Análise do treino anterior</h2></div>
-  <p class="lead">Seu volume semanal estava razoável — o problema era a distribuição: 16–20 séries do mesmo músculo num único dia, mais técnicas de intensidade espalhadas em tudo, mais 15 min de aquecimento. Resultado: sessões de 90–100 min.</p>
-  <div class="grid2">
-    <div class="card">
-      <h3>✂️ O que fazia demorar</h3>
-      <ul class="clean">
-        <li>8–10 exercícios × 4–5 séries por dia = 30–40 séries/dia</li>
-        <li>Redundância: 4 exercícios de quadríceps no mesmo dia, 3 isoladores de peito, cadeira + mesa flexora juntas</li>
-        <li>Back-off, rest-pause e isometrias em quase tudo (+1–3 min por série)</li>
-        <li>10 min de alongamento estático antes do treino (baixo custo-benefício)</li>
-      </ul>
+  <div class="sechead"><span class="secnum">02</span><h2>Diário & Registro do treino</h2></div>
+  <p class="lead">Selecione o dia para marcar status rápidos e anotar impressões ou ajustes da sessão.</p>
+
+  <div class="card diary-card">
+    <div class="diary-day-nav">
+      <button class="diary-day-btn active" data-diary-day="seg">Segunda</button>
+      <button class="diary-day-btn" data-diary-day="ter">Terça</button>
+      <button class="diary-day-btn" data-diary-day="qua">Quarta</button>
+      <button class="diary-day-btn" data-diary-day="qui">Quinta</button>
+      <button class="diary-day-btn" data-diary-day="sex">Sexta</button>
     </div>
-    <div class="card">
-      <h3>🔄 A solução</h3>
-      <p>O mesmo volume semanal <b>distribuído em 5 sessões</b> gera hipertrofia igual ou superior (meta-análises de Schoenfeld e colegas), com execução melhor no fim do treino. Agora: 3–4 séries por músculo por dia, quase todos os dias.</p>
+
+    <div class="diary-status-group">
+      <button class="status-chip" data-status="top">💪 Rendimento top</button>
+      <button class="status-chip" data-status="sub">🔄 Substituição feita</button>
+      <button class="status-chip" data-status="pain">⚠️ Desconforto/dor</button>
+      <button class="status-chip" data-status="skip">🚫 Não treinei hoje</button>
+    </div>
+
+    <textarea id="diary-note" class="diary-textarea" placeholder="Ex: Cargas subiram fácil no supino; troquei leg press por agachamento livre; leve incômodo no ombro esquerdo..."></textarea>
+    
+    <div class="diary-footer">
+      <span>Toque nas opções para registrar</span>
+      <span id="diary-saved-hint">Salvo automaticamente</span>
     </div>
   </div>
-  <div class="card">
-    <h3>❌ Cortados e por quê</h3>
-    <ul class="clean">
-      <li><b>Cadeira extensora</b> — com 3 compostos de quadríceps, não justifica o tempo</li>
-      <li><b>Elevação frontal</b> — deltoide anterior já recebe ~14 séries semanais de supinos + desenvolvimento</li>
-      <li><b>Crossover + crucifixo duplicados</b> — 1 isolador de peito por dia basta</li>
-      <li><b>2º e 3º exercícios de bíceps/tríceps no mesmo dia</b> — 1 por sessão, em mais dias</li>
-    </ul>
-  </div>
-  <div class="note ok"><b>Regra de ouro do novo plano</b>Se sobrar energia, não adicione exercício — adicione 1 série no exercício principal do dia ou melhore as repetições.</div>
 </section>
 
-<!-- ========== TREINO ========== -->
+<!-- ========== 03: TREINO ========== -->
 <section id="treino">
   <div class="sechead"><span class="secnum">03</span><h2>O treino</h2></div>
-  <p class="lead">Toque em cada card para marcar como concluído (fica salvo neste dispositivo). Abdômen entra em seg, qua e sex — dia sim, dia não.</p>
+  <p class="lead">Toque no card para marcar ✔ e digite sua carga/repetições reais para acompanhar sua progressão.</p>
 
   <div class="card">
     <div class="grid2">
@@ -138,12 +137,91 @@
   <div class="panel active" id="panel-seg">
     <div class="daybar"><div class="track"><div class="fill" id="fill-seg"></div></div><span class="txt" id="txt-seg"></span><button class="resetbtn" data-day="seg">limpar</button></div>
     <p class="hint">toque no card para marcar ✔</p>
-    <div class="ex" data-day="seg" data-key="seg1"><span class="cbox">✓</span><div><div class="exname">Mesa flexora</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div><div class="exnote">Leve para as pernas — você joga vôlei hoje</div></div></div>
-    <div class="ex" data-day="seg" data-key="seg2"><span class="cbox">✓</span><div><div class="exname">Crossover na polia alta</div><div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:15</span></div><div class="exnote">Foco na contração, leve cruzamento</div></div></div>
-    <div class="ex" data-day="seg" data-key="seg3"><span class="cbox">✓</span><div><div class="exname">Remada alta na polia</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div><div class="exnote">Cotovelos acima das mãos</div></div></div>
-    <div class="ex" data-day="seg" data-key="seg4"><span class="cbox">✓</span><div><div class="exname">Face pull</div><div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div><div class="exnote">Puxe até a testa, gire os punhos para fora</div></div></div>
-    <div class="ex" data-day="seg" data-key="seg5"><span class="cbox">✓</span><div><div class="exname">Tríceps unilateral na polia</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div><div class="exnote">—</div></div></div>
-    <div class="ex" data-day="seg" data-key="seg6"><span class="cbox">✓</span><div><div class="exname">Panturrilha no Smith c/ step</div><div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div><div class="exnote">2–3s alongado embaixo, em cada repetição</div></div></div>
+    
+    <div class="ex" data-day="seg" data-key="seg1">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Mesa flexora</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
+        <div class="exnote">Leve para as pernas — você joga vôlei hoje</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg1-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg1-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="seg" data-key="seg2">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Crossover na polia alta</div>
+        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote">Foco na contração, leve cruzamento</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg2-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg2-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="seg" data-key="seg3">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Remada alta na polia</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
+        <div class="exnote">Cotovelos acima das mãos</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg3-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg3-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="seg" data-key="seg4">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Face pull</div>
+        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote">Puxe até a testa, gire os punhos para fora</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg4-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg4-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="seg" data-key="seg5">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Tríceps unilateral na polia</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote">—</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg5-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg5-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="seg" data-key="seg6">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Panturrilha no Smith c/ step</div>
+        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote">2–3s alongado embaixo, em cada repetição</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg6-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg6-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal remador 10–15 + Canivete alternado 10–12 · ~45s entre rodadas</div>
   </div>
 
@@ -151,23 +229,167 @@
   <div class="panel" id="panel-ter">
     <div class="daybar"><div class="track"><div class="fill" id="fill-ter"></div></div><span class="txt" id="txt-ter"></span><button class="resetbtn" data-day="ter">limpar</button></div>
     <p class="hint">toque no card para marcar ✔</p>
-    <div class="ex" data-day="ter" data-key="ter1"><span class="cbox">✓</span><div><div class="exname">Agachamento no Smith</div><div class="pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div><div class="exnote">Paralela ou pouco abaixo · 1–2 reps de reserva · dia pesado de perna</div></div></div>
-    <div class="ex" data-day="ter" data-key="ter2"><span class="cbox">✓</span><div><div class="exname">Supino reto com barra</div><div class="pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div><div class="exnote">Escápulas retraídas, barra na linha do peito</div></div></div>
-    <div class="ex" data-day="ter" data-key="ter3"><span class="cbox">✓</span><div><div class="exname">Puxada pronada</div><div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">Puxe com os cotovelos, não com as mãos</div></div></div>
-    <div class="ex" data-day="ter" data-key="ter4"><span class="cbox">✓</span><div><div class="exname">Cadeira flexora</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div><div class="exnote">Controle a volta, sem pico isométrico</div></div></div>
-    <div class="ex" data-day="ter" data-key="ter5"><span class="cbox">✓</span><div><div class="exname">Elevação lateral c/ halteres</div><div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div><div class="exnote">Até a linha do ombro, sem encolher</div></div></div>
-    <div class="ex" data-day="ter" data-key="ter6"><span class="cbox">✓</span><div><div class="exname">Tríceps na polia</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div><div class="exnote">Cotovelos fixos ao lado do corpo</div></div></div>
+
+    <div class="ex" data-day="ter" data-key="ter1">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Agachamento no Smith</div>
+        <div class="pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
+        <div class="exnote">Paralela ou pouco abaixo · 1–2 reps de reserva · dia pesado de perna</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter1-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter1-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="ter" data-key="ter2">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Supino reto com barra</div>
+        <div class="pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
+        <div class="exnote">Escápulas retraídas, barra na linha do peito</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter2-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter2-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="ter" data-key="ter3">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Puxada pronada</div>
+        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">Puxe com os cotovelos, não com as mãos</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter3-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter3-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="ter" data-key="ter4">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Cadeira flexora</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
+        <div class="exnote">Controle a volta, sem pico isométrico</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter4-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter4-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="ter" data-key="ter5">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Elevação lateral c/ halteres</div>
+        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote">Até a linha do ombro, sem encolher</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter5-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter5-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="ter" data-key="ter6">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Tríceps na polia</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote">Cotovelos fixos ao lado do corpo</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter6-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter6-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- QUARTA -->
   <div class="panel" id="panel-qua">
     <div class="daybar"><div class="track"><div class="fill" id="fill-qua"></div></div><span class="txt" id="txt-qua"></span><button class="resetbtn" data-day="qua">limpar</button></div>
     <p class="hint">toque no card para marcar ✔</p>
-    <div class="ex" data-day="qua" data-key="qua1"><span class="cbox">✓</span><div><div class="exname">Remada curvada supinada</div><div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div><div class="exnote">Tronco ~45°, sem arredondar a lombar</div></div></div>
-    <div class="ex" data-day="qua" data-key="qua2"><span class="cbox">✓</span><div><div class="exname">Leg press 45°</div><div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">Amplitude completa, sem soltar o quadril · intensidade moderada (vôlei hoje)</div></div></div>
-    <div class="ex" data-day="qua" data-key="qua3"><span class="cbox">✓</span><div><div class="exname">Crucifixo na máquina</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div><div class="exnote">Excêntrica de 2–3s</div></div></div>
-    <div class="ex" data-day="qua" data-key="qua4"><span class="cbox">✓</span><div><div class="exname">Cadeira abdutora</div><div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div><div class="exnote">Tronco levemente à frente</div></div></div>
-    <div class="ex" data-day="qua" data-key="qua5"><span class="cbox">✓</span><div><div class="exname">Supersérie: Crucifixo inverso + Rosca martelo</div><div class="pills"><span class="p set">12–15 + 10–12</span><span class="p rest">⏱ 1:30 após o par</span></div><div class="exnote">3 rodadas · economiza ~5 min</div></div></div>
+
+    <div class="ex" data-day="qua" data-key="qua1">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Remada curvada supinada</div>
+        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
+        <div class="exnote">Tronco ~45°, sem arredondar a lombar</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua1-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua1-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qua" data-key="qua2">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Leg press 45°</div>
+        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">Amplitude completa, sem soltar o quadril · intensidade moderada (vôlei hoje)</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua2-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua2-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qua" data-key="qua3">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Crucifixo na máquina</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote">Excêntrica de 2–3s</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua3-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua3-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qua" data-key="qua4">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Cadeira abdutora</div>
+        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote">Tronco levemente à frente</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua4-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua4-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qua" data-key="qua5">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Supersérie: Crucifixo inverso + Rosca martelo</div>
+        <div class="pills"><span class="p set">12–15 + 10–12</span><span class="p rest">⏱ 1:30 após o par</span></div>
+        <div class="exnote">3 rodadas · economiza ~5 min</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua5-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua5-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Supra no banco declinado 12–15 + Prancha 30–45s · ~45s entre rodadas</div>
   </div>
 
@@ -175,24 +397,181 @@
   <div class="panel" id="panel-qui">
     <div class="daybar"><div class="track"><div class="fill" id="fill-qui"></div></div><span class="txt" id="txt-qui"></span><button class="resetbtn" data-day="qui">limpar</button></div>
     <p class="hint">toque no card para marcar ✔</p>
-    <div class="ex" data-day="qui" data-key="qui1"><span class="cbox">✓</span><div><div class="exname">Agachamento hack</div><div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div><div class="exnote">Fundo controlado, calcanhares no chão</div></div></div>
-    <div class="ex" data-day="qui" data-key="qui2"><span class="cbox">✓</span><div><div class="exname">Stiff (halteres ou barra)</div><div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">Joelhos quase travados, quadril para trás, coluna neutra</div></div></div>
-    <div class="ex" data-day="qui" data-key="qui3"><span class="cbox">✓</span><div><div class="exname">Supino inclinado c/ barra</div><div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:15</span></div><div class="exnote">Inclinação ~30–45°</div></div></div>
-    <div class="ex" data-day="qui" data-key="qui4"><span class="cbox">✓</span><div><div class="exname">Puxada c/ pegada neutra</div><div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 1:45</span></div><div class="exnote">Peito aberto, sem jogar o tronco para trás</div></div></div>
-    <div class="ex" data-day="qui" data-key="qui5"><span class="cbox">✓</span><div><div class="exname">Elevação lateral na polia</div><div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div><div class="exnote">Tensão constante</div></div></div>
-    <div class="ex" data-day="qui" data-key="qui6"><span class="cbox">✓</span><div><div class="exname">Tríceps francês</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div><div class="exnote">Cotovelos apontando para cima</div></div></div>
+
+    <div class="ex" data-day="qui" data-key="qui1">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Agachamento hack</div>
+        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
+        <div class="exnote">Fundo controlado, calcanhares no chão</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui1-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui1-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qui" data-key="qui2">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Stiff (halteres ou barra)</div>
+        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">Joelhos quase travados, quadril para trás, coluna neutra</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui2-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui2-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qui" data-key="qui3">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Supino inclinado c/ barra</div>
+        <div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
+        <div class="exnote">Inclinação ~30–45°</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui3-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui3-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qui" data-key="qui4">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Puxada c/ pegada neutra</div>
+        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 1:45</span></div>
+        <div class="exnote">Peito aberto, sem jogar o tronco para trás</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui4-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui4-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qui" data-key="qui5">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Elevação lateral na polia</div>
+        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote">Tensão constante</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui5-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui5-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="qui" data-key="qui6">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Tríceps francês</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote">Cotovelos apontando para cima</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui6-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui6-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- SEXTA -->
   <div class="panel" id="panel-sex">
     <div class="daybar"><div class="track"><div class="fill" id="fill-sex"></div></div><span class="txt" id="txt-sex"></span><button class="resetbtn" data-day="sex">limpar</button></div>
     <p class="hint">toque no card para marcar ✔</p>
-    <div class="ex" data-day="sex" data-key="sex1"><span class="cbox">✓</span><div><div class="exname">Elevação pélvica</div><div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">Contração máxima no topo, coluna neutra</div></div></div>
-    <div class="ex" data-day="sex" data-key="sex2"><span class="cbox">✓</span><div><div class="exname">Leg press 45°</div><div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">Vôlei amanhã — 1–2 reps de reserva</div></div></div>
-    <div class="ex" data-day="sex" data-key="sex3"><span class="cbox">✓</span><div><div class="exname">Desenvolvimento c/ halteres</div><div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">Antes: 2 séries leves de rotação de ombro na polia</div></div></div>
-    <div class="ex" data-day="sex" data-key="sex4"><span class="cbox">✓</span><div><div class="exname">Remada baixa c/ triângulo</div><div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div><div class="exnote">1s de contração no encurtamento</div></div></div>
-    <div class="ex" data-day="sex" data-key="sex5"><span class="cbox">✓</span><div><div class="exname">Rosca direta (barra ou halteres)</div><div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div><div class="exnote">Sem balanço de tronco</div></div></div>
-    <div class="ex" data-day="sex" data-key="sex6"><span class="cbox">✓</span><div><div class="exname">Panturrilha em pé no Smith</div><div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div><div class="exnote">2–3s alongado embaixo, em cada repetição</div></div></div>
+
+    <div class="ex" data-day="sex" data-key="sex1">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Elevação pélvica</div>
+        <div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">Contração máxima no topo, coluna neutra</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex1-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex1-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="sex" data-key="sex2">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Leg press 45°</div>
+        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">Vôlei amanhã — 1–2 reps de reserva</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex2-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex2-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="sex" data-key="sex3">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Desenvolvimento c/ halteres</div>
+        <div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">Antes: 2 séries leves de rotação de ombro na polia</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex3-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex3-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="sex" data-key="sex4">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Remada baixa c/ triângulo</div>
+        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote">1s de contração no encurtamento</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex4-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex4-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="sex" data-key="sex5">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Rosca direta (barra ou halteres)</div>
+        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote">Sem balanço de tronco</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex5-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex5-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ex" data-day="sex" data-key="sex6">
+      <span class="cbox">✓</span>
+      <div class="ex-info">
+        <div class="exname">Panturrilha em pé no Smith</div>
+        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote">2–3s alongado embaixo, em cada repetição</div>
+        <div class="ex-inputs" onclick="event.stopPropagation()">
+          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex6-kg" placeholder="—"><span class="unit">kg</span></div>
+          <span class="sep">×</span>
+          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex6-reps" placeholder="—"><span class="unit">reps</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal infra 12–15 + Lenhador na polia 10/lado · ~45s entre rodadas</div>
   </div>
 
@@ -211,7 +590,7 @@
   </div>
 </section>
 
-<!-- ========== PROGRESSÃO ========== -->
+<!-- ========== 04: PROGRESSÃO ========== -->
 <section id="progressao">
   <div class="sechead"><span class="secnum">04</span><h2>Progressão</h2></div>
   <p class="lead">Dupla progressão: sobe repetição primeiro, carga depois. Sem técnicas que roubam tempo.</p>
@@ -229,7 +608,7 @@
   </div>
 </section>
 
-<!-- ========== DIETA ========== -->
+<!-- ========== 05: DIETA ========== -->
 <section id="dieta">
   <div class="sechead"><span class="secnum">05</span><h2>Dieta — análise e calorias</h2></div>
   <p class="lead">Comparando suas avaliações (19/01 → 09/03): você ganhou 2,1 kg em ~7 semanas — massa magra subiu (+0,8 a +1,2 kg), mas cerca de metade do ganho foi gordura (cintura +5,5 cm, %GC ↑ nos dois métodos). O treino funcionou; a proporção é que pode melhorar.</p>
@@ -251,7 +630,7 @@
   </div>
 </section>
 
-<!-- ========== MACROS ========== -->
+<!-- ========== 06: MACROS ========== -->
 <section id="macros">
   <div class="sechead"><span class="secnum">06</span><h2>Macros diários</h2></div>
   <div class="card">
@@ -275,7 +654,7 @@
   </div>
 </section>
 
-<!-- ========== CARDÁPIO ========== -->
+<!-- ========== 07: CARDÁPIO ========== -->
 <section id="cardapio">
   <div class="sechead"><span class="secnum">07</span><h2>Cardápio exemplo · ~3.000 kcal</h2></div>
   <div class="meal"><div class="mhead"><span class="emoji">☕</span><span class="mtitle">Café da manhã</span><span class="p cal">~620 kcal · 25 g prot</span></div><div class="mbody"><p>Mingau: 250 ml de leite + 4 col. sopa de aveia + 1 banana + canela</p><p>2 ovos (cozidos ou omelete) · 1 fatia de pão integral com geleia</p></div></div>
@@ -287,7 +666,7 @@
   <div class="note ok"><b>Total base: ~3.000–3.100 kcal · ~165 g de proteína</b>Arroz, pão e frutas são o seu "botão de calorias" — quem manda no final é a média semanal da balança.</div>
 </section>
 
-<!-- ========== TROCAS ========== -->
+<!-- ========== 08: TROCAS ========== -->
 <section id="trocas">
   <div class="sechead"><span class="secnum">08</span><h2>Substituições</h2></div>
   <p class="lead">Troque dentro do mesmo grupo sem recalcular nada. Sem castanha-do-pará em nenhuma opção.</p>
@@ -315,7 +694,7 @@
   </div>
 </section>
 
-<!-- ========== ACOMPANHAMENTO ========== -->
+<!-- ========== 09: ACOMPANHAMENTO ========== -->
 <section id="resultados">
   <div class="sechead"><span class="secnum">09</span><h2>Acompanhamento</h2></div>
   <p class="lead">Pese-se todo dia (manhã, jejum, após o banheiro) e use a média semanal. As regras abaixo valem a partir da 3ª semana — as duas primeiras a balança vai subir mais rápido por creatina, glicogênio e água.</p>
@@ -352,7 +731,6 @@
 
 <button class="printbtn" onclick="window.print()">🖨️ PDF</button>
 
-<!-- Script Modular -->
 <script src="js/app.js" defer></script>
 </body>
 </html>

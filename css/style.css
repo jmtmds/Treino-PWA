@@ -260,6 +260,114 @@ ul.clean li::before {
   color: #7A3E20;
 }
 
+/* ---------- DIÁRIO & REGISTRO (NOVA ABA 02) ---------- */
+.diary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.diary-day-nav {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.diary-day-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.diary-day-btn {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--muted);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.diary-day-btn.active {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.diary-status-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.status-chip {
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: .75rem;
+  font-weight: 600;
+  color: var(--ink);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: all .15s;
+}
+
+.status-chip.active[data-status="top"] {
+  background: var(--green-soft);
+  border-color: var(--green);
+  color: var(--green-ink);
+}
+
+.status-chip.active[data-status="sub"] {
+  background: var(--amber-soft);
+  border-color: var(--amber);
+  color: #6E5518;
+}
+
+.status-chip.active[data-status="pain"] {
+  background: var(--terra-soft);
+  border-color: var(--terra);
+  color: #7A3E20;
+}
+
+.status-chip.active[data-status="skip"] {
+  background: #E0DDD5;
+  border-color: #8C867A;
+  color: #3B3833;
+}
+
+.diary-textarea {
+  width: 100%;
+  min-height: 85px;
+  border: 1px solid var(--line);
+  background: #FBFAF6;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-family: inherit;
+  font-size: 16px; /* Evita zoom automático no iOS */
+  color: var(--ink);
+  line-height: 1.4;
+  resize: vertical;
+  outline: none;
+}
+
+.diary-textarea:focus {
+  border-color: var(--green);
+  background: #fff;
+}
+
+.diary-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .72rem;
+  color: var(--muted);
+}
+
 /* ---------- SEMANA ---------- */
 .weekgrid {
   display: grid;
@@ -487,6 +595,10 @@ ul.clean li::before {
   transition: all .15s;
 }
 
+.ex-info {
+  flex: 1;
+}
+
 .ex .exname {
   font-weight: 700;
   font-size: .95rem;
@@ -502,6 +614,47 @@ ul.clean li::before {
 .ex .exnote {
   font-size: .78rem;
   color: var(--muted);
+}
+
+/* Micro-Inputs de Carga e Reps no Treino */
+.ex-inputs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #F4F1E8;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 3px 8px;
+}
+
+.input-box input {
+  width: 44px;
+  border: none;
+  background: transparent;
+  font-size: 16px; /* Evita zoom automático no Safari iOS */
+  font-weight: 700;
+  color: var(--ink);
+  text-align: center;
+  outline: none;
+}
+
+.input-box .unit {
+  font-size: .68rem;
+  color: var(--muted);
+  font-weight: 600;
+  margin-left: 2px;
+}
+
+.ex-inputs .sep {
+  font-size: .75rem;
+  color: var(--muted);
+  font-weight: 700;
 }
 
 .ex.done {
