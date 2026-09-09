@@ -260,55 +260,25 @@ ul.clean li::before {
   color: #7A3E20;
 }
 
-/* ---------- DIÁRIO & REGISTRO (NOVA ABA 02) ---------- */
-.diary-card {
+/* ---------- NOVO SISTEMA DE DIÁRIO / HISTÓRICO ---------- */
+.diary-form {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-.diary-day-nav {
-  display: flex;
-  gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 4px;
-  scrollbar-width: none;
-}
-
-.diary-day-nav::-webkit-scrollbar {
-  display: none;
-}
-
-.diary-day-btn {
-  background: var(--bg);
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 6px 14px;
-  font-size: .78rem;
-  font-weight: 700;
-  color: var(--muted);
-  cursor: pointer;
-  touch-action: manipulation;
-}
-
-.diary-day-btn.active {
-  background: var(--ink);
-  color: #fff;
-  border-color: var(--ink);
-}
-
-.diary-status-group {
+.diary-tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
 
-.status-chip {
+.tag-btn {
   background: var(--bg);
   border: 1px solid var(--line);
   border-radius: 999px;
-  padding: 6px 12px;
-  font-size: .75rem;
+  padding: 6px 13px;
+  font-size: .78rem;
   font-weight: 600;
   color: var(--ink);
   cursor: pointer;
@@ -316,28 +286,28 @@ ul.clean li::before {
   transition: all .15s;
 }
 
-.status-chip.active[data-status="top"] {
+.tag-btn.active[data-tag="Rendimento"] {
   background: var(--green-soft);
   border-color: var(--green);
   color: var(--green-ink);
 }
 
-.status-chip.active[data-status="sub"] {
+.tag-btn.active[data-tag="Substituição"] {
   background: var(--amber-soft);
   border-color: var(--amber);
   color: #6E5518;
 }
 
-.status-chip.active[data-status="pain"] {
+.tag-btn.active[data-tag="Desconforto/Dor"] {
   background: var(--terra-soft);
   border-color: var(--terra);
   color: #7A3E20;
 }
 
-.status-chip.active[data-status="skip"] {
-  background: #E0DDD5;
+.tag-btn.active[data-tag="Não Treinei"] {
+  background: #E5E1D8;
   border-color: #8C867A;
-  color: #3B3833;
+  color: #2F2D29;
 }
 
 .diary-textarea {
@@ -348,11 +318,11 @@ ul.clean li::before {
   border-radius: 14px;
   padding: 12px 14px;
   font-family: inherit;
-  font-size: 16px; /* Evita zoom automático no iOS */
+  font-size: 16px; /* Impede zoom no iOS */
   color: var(--ink);
   line-height: 1.4;
-  resize: vertical;
   outline: none;
+  resize: vertical;
 }
 
 .diary-textarea:focus {
@@ -360,12 +330,123 @@ ul.clean li::before {
   background: #fff;
 }
 
-.diary-footer {
+.diary-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.diary-submit-btn {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: .84rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+  box-shadow: 0 4px 12px rgba(47,93,75,.25);
+  transition: opacity .15s;
+}
+
+.diary-submit-btn:active {
+  opacity: .85;
+}
+
+/* Feed de Comentários / Histórico */
+.diary-feed {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.diary-empty {
+  font-size: .82rem;
+  color: var(--muted);
+  text-align: center;
+  padding: 16px 0;
+}
+
+.diary-entry-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 14px 16px;
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.diary-entry-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: .72rem;
+}
+
+.diary-entry-date {
+  font-size: .74rem;
+  font-weight: 700;
   color: var(--muted);
+}
+
+.diary-delete-btn {
+  background: none;
+  border: none;
+  color: #A34839;
+  font-size: .72rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.diary-delete-btn:hover {
+  background: var(--terra-soft);
+}
+
+.diary-entry-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.entry-pill {
+  font-size: .66rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 2px 8px;
+}
+
+.entry-pill.tag-rendimento {
+  background: var(--green-soft);
+  color: var(--green-ink);
+}
+
+.entry-pill.tag-substituicao {
+  background: var(--amber-soft);
+  color: #6E5518;
+}
+
+.entry-pill.tag-desconforto {
+  background: var(--terra-soft);
+  color: #7A3E20;
+}
+
+.entry-pill.tag-nao-treinei {
+  background: #E5E1D8;
+  color: #2F2D29;
+}
+
+.diary-entry-body {
+  font-size: .88rem;
+  color: #4A5045;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 /* ---------- SEMANA ---------- */
@@ -637,7 +718,7 @@ ul.clean li::before {
   width: 44px;
   border: none;
   background: transparent;
-  font-size: 16px; /* Evita zoom automático no Safari iOS */
+  font-size: 16px; /* Impede zoom no iOS */
   font-weight: 700;
   color: var(--ink);
   text-align: center;
@@ -687,7 +768,7 @@ ul.clean li::before {
   margin-bottom: 4px;
 }
 
-/* barras de volume */
+/* Barras de volume */
 .vrow {
   display: grid;
   grid-template-columns: 110px 1fr 78px;

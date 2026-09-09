@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- Estilos Modulares -->
+<!-- Folha de Estilo Modular -->
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -67,34 +67,28 @@
   <div class="note attn"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve (ritmo em que você consegue conversar). Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai. Se aparecerem, corte 1–2 séries por dia ou pule a corrida da semana. A cada 3–4 semanas, um domingo de descanso total faz bem.</div>
 </section>
 
-<!-- ========== 02: DIÁRIO & ANÁLISE DO TREINO (NOVA VERSÃO) ========== -->
+<!-- ========== 02: DIÁRIO DO TREINO (FEED COM DATA, HORA E TAGS) ========== -->
 <section id="analise">
-  <div class="sechead"><span class="secnum">02</span><h2>Diário & Registro do treino</h2></div>
-  <p class="lead">Selecione o dia para marcar status rápidos e anotar impressões ou ajustes da sessão.</p>
+  <div class="sechead"><span class="secnum">02</span><h2>Diário de Treino</h2></div>
+  <p class="lead">Escreva suas percepções, selecione as tags correspondentes e registre. As notas ficam salvas no seu aparelho em ordem cronológica.</p>
 
-  <div class="card diary-card">
-    <div class="diary-day-nav">
-      <button class="diary-day-btn active" data-diary-day="seg">Segunda</button>
-      <button class="diary-day-btn" data-diary-day="ter">Terça</button>
-      <button class="diary-day-btn" data-diary-day="qua">Quarta</button>
-      <button class="diary-day-btn" data-diary-day="qui">Quinta</button>
-      <button class="diary-day-btn" data-diary-day="sex">Sexta</button>
+  <div class="card diary-form">
+    <div class="diary-tag-list">
+      <button class="tag-btn" data-tag="Rendimento">💪 Rendimento</button>
+      <button class="tag-btn" data-tag="Substituição">🔄 Substituição</button>
+      <button class="tag-btn" data-tag="Desconforto/Dor">⚠️ Desconforto/Dor</button>
+      <button class="tag-btn" data-tag="Não Treinei">🚫 Não Treinei</button>
     </div>
 
-    <div class="diary-status-group">
-      <button class="status-chip" data-status="top">💪 Rendimento top</button>
-      <button class="status-chip" data-status="sub">🔄 Substituição feita</button>
-      <button class="status-chip" data-status="pain">⚠️ Desconforto/dor</button>
-      <button class="status-chip" data-status="skip">🚫 Não treinei hoje</button>
-    </div>
+    <textarea id="diary-text" class="diary-textarea" placeholder="Ex: Senti dor na lombar no agachamento e substituí por leg press com orientação do professor..."></textarea>
 
-    <textarea id="diary-note" class="diary-textarea" placeholder="Ex: Cargas subiram fácil no supino; troquei leg press por agachamento livre; leve incômodo no ombro esquerdo..."></textarea>
-    
-    <div class="diary-footer">
-      <span>Toque nas opções para registrar</span>
-      <span id="diary-saved-hint">Salvo automaticamente</span>
+    <div class="diary-actions">
+      <button id="diary-submit" class="diary-submit-btn">Salvar Registro</button>
     </div>
   </div>
+
+  <!-- Feed de Comentários Anteriores -->
+  <div id="diary-feed" class="diary-feed"></div>
 </section>
 
 <!-- ========== 03: TREINO ========== -->
