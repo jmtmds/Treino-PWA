@@ -24,15 +24,30 @@
 
 <header>
   <div class="wrap">
-    <p class="eyebrow">Plano personalizado · 29 anos · rotina ativa</p>
-    <h1 class="serif">Hipertrofia em 45–60 min, dentro da sua semana real.</h1>
-    <p class="sub">Full Body 5× na musculação + vôlei seg/qua/sáb + corrida leve no domingo · superávit controlado para ganhar massa com o mínimo de gordura.</p>
+    <p class="eyebrow" contenteditable="true" data-edit-key="header-eyebrow">Plano personalizado · 29 anos · rotina ativa</p>
+    <h1 class="serif" contenteditable="true" data-edit-key="header-title">Hipertrofia em 45–60 min, dentro da sua semana real.</h1>
+    <p class="sub" contenteditable="true" data-edit-key="header-sub">Full Body 5× na musculação + vôlei seg/qua/sáb + corrida leve no domingo · superávit controlado para ganhar massa com o mínimo de gordura.</p>
     <div class="statchips">
-      <span class="schip">74,4 kg<small>peso atual</small></span>
-      <span class="schip">1,85 m<small>altura</small></span>
-      <span class="schip">~3.000 kcal<small>meta diária</small></span>
-      <span class="schip">150–160 g<small>proteína</small></span>
-      <span class="schip">45–60 min<small>por sessão</small></span>
+      <span class="schip">
+        <span class="val" contenteditable="true" data-edit-key="chip-peso">74,4 kg</span>
+        <small>peso atual</small>
+      </span>
+      <span class="schip">
+        <span class="val" contenteditable="true" data-edit-key="chip-altura">1,85 m</span>
+        <small>altura</small>
+      </span>
+      <span class="schip">
+        <span class="val" contenteditable="true" data-edit-key="chip-kcal">~3.000 kcal</span>
+        <small>meta diária</small>
+      </span>
+      <span class="schip">
+        <span class="val" contenteditable="true" data-edit-key="chip-prot">150–160 g</span>
+        <small>proteína</small>
+      </span>
+      <span class="schip">
+        <span class="val" contenteditable="true" data-edit-key="chip-tempo">45–60 min</span>
+        <small>por sessão</small>
+      </span>
     </div>
   </div>
 </header>
@@ -51,10 +66,10 @@
 
 <main class="wrap">
 
-<!-- ========== SEMANA ========== -->
+<!-- ========== 01: SEMANA ========== -->
 <section id="semana">
   <div class="sechead"><span class="secnum">01</span><h2>Sua semana</h2></div>
-  <p class="lead">Treinos pesados de perna ficaram nas terças e quintas — os únicos dias sem vôlei. Segunda e quarta são sessões leves/moderadas para não sabotar a quadra.</p>
+  <p class="lead" contenteditable="true" data-edit-key="semana-lead">Treinos pesados de perna ficaram nas terças e quintas — os únicos dias sem vôlei. Segunda e quarta são sessões leves/moderadas para não sabotar a quadra.</p>
   <div class="weekgrid">
     <div class="wday"><span class="dn">Seg</span><span class="wtag gym">Leve · 45′</span><span class="wtag sport">🏐 Vôlei</span><small>abdômen ✓</small></div>
     <div class="wday"><span class="dn">Ter</span><span class="wtag gym heavy">Base pesada · 60′</span><small>dia do agachamento</small></div>
@@ -64,13 +79,13 @@
     <div class="wday"><span class="dn">Sáb</span><span class="wtag sport">🏐 Vôlei</span><small>sem musculação</small></div>
     <div class="wday"><span class="dn">Dom</span><span class="wtag rest">🏃 Corrida leve</span><small>20–30′ · Z2</small></div>
   </div>
-  <div class="note attn"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve (ritmo em que você consegue conversar). Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai. Se aparecerem, corte 1–2 séries por dia ou pule a corrida da semana. A cada 3–4 semanas, um domingo de descanso total faz bem.</div>
+  <div class="note attn" contenteditable="true" data-edit-key="semana-note"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve. Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai.</div>
 </section>
 
-<!-- ========== 02: DIÁRIO DO TREINO (FEED COM DATA, HORA E TAGS) ========== -->
+<!-- ========== 02: DIÁRIO DE TREINO (FEED COM EDIÇÃO E EXCLUSÃO) ========== -->
 <section id="analise">
   <div class="sechead"><span class="secnum">02</span><h2>Diário de Treino</h2></div>
-  <p class="lead">Escreva suas percepções, selecione as tags correspondentes e registre. As notas ficam salvas no seu aparelho em ordem cronológica.</p>
+  <p class="lead">Escreva suas percepções, selecione tags e salve. Você pode editar ou deletar qualquer registro a qualquer momento.</p>
 
   <div class="card diary-form">
     <div class="diary-tag-list">
@@ -80,36 +95,36 @@
       <button class="tag-btn" data-tag="Não Treinei">🚫 Não Treinei</button>
     </div>
 
-    <textarea id="diary-text" class="diary-textarea" placeholder="Ex: Senti dor na lombar no agachamento e substituí por leg press com orientação do professor..."></textarea>
+    <textarea id="diary-text" class="diary-textarea" placeholder="Ex: Senti desconforto na lombar no agachamento e substituí por leg press..."></textarea>
 
     <div class="diary-actions">
+      <button id="diary-cancel" class="diary-cancel-btn">Cancelar</button>
       <button id="diary-submit" class="diary-submit-btn">Salvar Registro</button>
     </div>
   </div>
 
-  <!-- Feed de Comentários Anteriores -->
   <div id="diary-feed" class="diary-feed"></div>
 </section>
 
-<!-- ========== 03: TREINO ========== -->
+<!-- ========== 03: TREINO (TOTALMENTE EDITÁVEL) ========== -->
 <section id="treino">
   <div class="sechead"><span class="secnum">03</span><h2>O treino</h2></div>
-  <p class="lead">Toque no card para marcar ✔ e digite sua carga/repetições reais para acompanhar sua progressão.</p>
+  <p class="lead">Toque no nome do exercício ou séries para alterar. Toque no card para marcar ✔ e digite suas cargas/repetições.</p>
 
   <div class="card">
     <div class="grid2">
       <div>
         <h3>🔥 Aquecimento — 5–8 min</h3>
-        <ul class="clean">
+        <ul class="clean" contenteditable="true" data-edit-key="treino-aquecimento">
           <li>3–5 min de bike leve</li>
-          <li>Séries de aproximação <b>só no 1º exercício de cada padrão</b>: 50% × 10–12 → 70% × 6–8 → 85% × 3</li>
+          <li>Séries de aproximação no 1º exercício de cada padrão: 50% × 10–12 → 70% × 6–8 → 85% × 3</li>
           <li>Exercícios seguintes do mesmo músculo: 1 série leve</li>
-          <li>Alongamento estático: <b>depois</b> do treino ou à noite</li>
+          <li>Alongamento estático: depois do treino ou à noite</li>
         </ul>
       </div>
       <div>
         <h3>⏳ Descansos</h3>
-        <ul class="clean">
+        <ul class="clean" contenteditable="true" data-edit-key="treino-descanso">
           <li><span class="p rest">2:00–2:30</span> compostos pesados</li>
           <li><span class="p rest">1:30–2:00</span> máquinas e puxadas</li>
           <li><span class="p rest">60–90s</span> isoladores e braços</li>
@@ -130,15 +145,15 @@
   <!-- SEGUNDA -->
   <div class="panel active" id="panel-seg">
     <div class="daybar"><div class="track"><div class="fill" id="fill-seg"></div></div><span class="txt" id="txt-seg"></span><button class="resetbtn" data-day="seg">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔</p>
+    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
     
     <div class="ex" data-day="seg" data-key="seg1">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Mesa flexora</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
-        <div class="exnote">Leve para as pernas — você joga vôlei hoje</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="seg1-name">Mesa flexora</div>
+        <div class="pills" contenteditable="true" data-edit-key="seg1-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="seg1-note">Leve para as pernas — você joga vôlei hoje</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg1-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg1-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -149,10 +164,10 @@
     <div class="ex" data-day="seg" data-key="seg2">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Crossover na polia alta</div>
-        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote">Foco na contração, leve cruzamento</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="seg2-name">Crossover na polia alta</div>
+        <div class="pills" contenteditable="true" data-edit-key="seg2-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="seg2-note">Foco na contração, leve cruzamento</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg2-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg2-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -163,10 +178,10 @@
     <div class="ex" data-day="seg" data-key="seg3">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Remada alta na polia</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
-        <div class="exnote">Cotovelos acima das mãos</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="seg3-name">Remada alta na polia</div>
+        <div class="pills" contenteditable="true" data-edit-key="seg3-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="seg3-note">Cotovelos acima das mãos</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg3-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg3-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -177,10 +192,10 @@
     <div class="ex" data-day="seg" data-key="seg4">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Face pull</div>
-        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote">Puxe até a testa, gire os punhos para fora</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="seg4-name">Face pull</div>
+        <div class="pills" contenteditable="true" data-edit-key="seg4-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="seg4-note">Puxe até a testa, gire os punhos para fora</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg4-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg4-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -191,10 +206,10 @@
     <div class="ex" data-day="seg" data-key="seg5">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Tríceps unilateral na polia</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote">—</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="seg5-name">Tríceps unilateral na polia</div>
+        <div class="pills" contenteditable="true" data-edit-key="seg5-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="seg5-note">—</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg5-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg5-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -205,10 +220,10 @@
     <div class="ex" data-day="seg" data-key="seg6">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Panturrilha no Smith c/ step</div>
-        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote">2–3s alongado embaixo, em cada repetição</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="seg6-name">Panturrilha no Smith c/ step</div>
+        <div class="pills" contenteditable="true" data-edit-key="seg6-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="seg6-note">2–3s alongado embaixo, em cada repetição</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg6-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg6-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -216,21 +231,21 @@
       </div>
     </div>
 
-    <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal remador 10–15 + Canivete alternado 10–12 · ~45s entre rodadas</div>
+    <div class="abscard" contenteditable="true" data-edit-key="seg-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal remador 10–15 + Canivete alternado 10–12 · ~45s entre rodadas</div>
   </div>
 
   <!-- TERÇA -->
   <div class="panel" id="panel-ter">
     <div class="daybar"><div class="track"><div class="fill" id="fill-ter"></div></div><span class="txt" id="txt-ter"></span><button class="resetbtn" data-day="ter">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔</p>
+    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
 
     <div class="ex" data-day="ter" data-key="ter1">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Agachamento no Smith</div>
-        <div class="pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
-        <div class="exnote">Paralela ou pouco abaixo · 1–2 reps de reserva · dia pesado de perna</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="ter1-name">Agachamento no Smith</div>
+        <div class="pills" contenteditable="true" data-edit-key="ter1-pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="ter1-note">Paralela ou pouco abaixo · 1–2 reps de reserva · dia pesado de perna</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter1-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter1-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -241,10 +256,10 @@
     <div class="ex" data-day="ter" data-key="ter2">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Supino reto com barra</div>
-        <div class="pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
-        <div class="exnote">Escápulas retraídas, barra na linha do peito</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="ter2-name">Supino reto com barra</div>
+        <div class="pills" contenteditable="true" data-edit-key="ter2-pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="ter2-note">Escápulas retraídas, barra na linha do peito</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter2-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter2-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -255,10 +270,10 @@
     <div class="ex" data-day="ter" data-key="ter3">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Puxada pronada</div>
-        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">Puxe com os cotovelos, não com as mãos</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="ter3-name">Puxada pronada</div>
+        <div class="pills" contenteditable="true" data-edit-key="ter3-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="ter3-note">Puxe com os cotovelos, não com as mãos</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter3-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter3-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -269,10 +284,10 @@
     <div class="ex" data-day="ter" data-key="ter4">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Cadeira flexora</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
-        <div class="exnote">Controle a volta, sem pico isométrico</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="ter4-name">Cadeira flexora</div>
+        <div class="pills" contenteditable="true" data-edit-key="ter4-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="ter4-note">Controle a volta, sem pico isométrico</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter4-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter4-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -283,10 +298,10 @@
     <div class="ex" data-day="ter" data-key="ter5">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Elevação lateral c/ halteres</div>
-        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote">Até a linha do ombro, sem encolher</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="ter5-name">Elevação lateral c/ halteres</div>
+        <div class="pills" contenteditable="true" data-edit-key="ter5-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="ter5-note">Até a linha do ombro, sem encolher</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter5-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter5-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -297,10 +312,10 @@
     <div class="ex" data-day="ter" data-key="ter6">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Tríceps na polia</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote">Cotovelos fixos ao lado do corpo</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="ter6-name">Tríceps na polia</div>
+        <div class="pills" contenteditable="true" data-edit-key="ter6-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="ter6-note">Cotovelos fixos ao lado do corpo</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter6-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter6-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -312,15 +327,15 @@
   <!-- QUARTA -->
   <div class="panel" id="panel-qua">
     <div class="daybar"><div class="track"><div class="fill" id="fill-qua"></div></div><span class="txt" id="txt-qua"></span><button class="resetbtn" data-day="qua">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔</p>
+    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
 
     <div class="ex" data-day="qua" data-key="qua1">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Remada curvada supinada</div>
-        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
-        <div class="exnote">Tronco ~45°, sem arredondar a lombar</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qua1-name">Remada curvada supinada</div>
+        <div class="pills" contenteditable="true" data-edit-key="qua1-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qua1-note">Tronco ~45°, sem arredondar a lombar</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua1-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua1-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -331,10 +346,10 @@
     <div class="ex" data-day="qua" data-key="qua2">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Leg press 45°</div>
-        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">Amplitude completa, sem soltar o quadril · intensidade moderada (vôlei hoje)</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qua2-name">Leg press 45°</div>
+        <div class="pills" contenteditable="true" data-edit-key="qua2-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qua2-note">Amplitude completa, sem soltar o quadril · intensidade moderada (vôlei hoje)</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua2-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua2-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -345,10 +360,10 @@
     <div class="ex" data-day="qua" data-key="qua3">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Crucifixo na máquina</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote">Excêntrica de 2–3s</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qua3-name">Crucifixo na máquina</div>
+        <div class="pills" contenteditable="true" data-edit-key="qua3-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qua3-note">Excêntrica de 2–3s</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua3-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua3-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -359,10 +374,10 @@
     <div class="ex" data-day="qua" data-key="qua4">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Cadeira abdutora</div>
-        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote">Tronco levemente à frente</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qua4-name">Cadeira abdutora</div>
+        <div class="pills" contenteditable="true" data-edit-key="qua4-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qua4-note">Tronco levemente à frente</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua4-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua4-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -373,10 +388,10 @@
     <div class="ex" data-day="qua" data-key="qua5">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Supersérie: Crucifixo inverso + Rosca martelo</div>
-        <div class="pills"><span class="p set">12–15 + 10–12</span><span class="p rest">⏱ 1:30 após o par</span></div>
-        <div class="exnote">3 rodadas · economiza ~5 min</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qua5-name">Supersérie: Crucifixo inverso + Rosca martelo</div>
+        <div class="pills" contenteditable="true" data-edit-key="qua5-pills"><span class="p set">12–15 + 10–12</span><span class="p rest">⏱ 1:30 após o par</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qua5-note">3 rodadas · economiza ~5 min</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua5-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua5-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -384,21 +399,21 @@
       </div>
     </div>
 
-    <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Supra no banco declinado 12–15 + Prancha 30–45s · ~45s entre rodadas</div>
+    <div class="abscard" contenteditable="true" data-edit-key="qua-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Supra no banco declinado 12–15 + Prancha 30–45s · ~45s entre rodadas</div>
   </div>
 
   <!-- QUINTA -->
   <div class="panel" id="panel-qui">
     <div class="daybar"><div class="track"><div class="fill" id="fill-qui"></div></div><span class="txt" id="txt-qui"></span><button class="resetbtn" data-day="qui">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔</p>
+    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
 
     <div class="ex" data-day="qui" data-key="qui1">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Agachamento hack</div>
-        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
-        <div class="exnote">Fundo controlado, calcanhares no chão</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qui1-name">Agachamento hack</div>
+        <div class="pills" contenteditable="true" data-edit-key="qui1-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qui1-note">Fundo controlado, calcanhares no chão</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui1-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui1-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -409,10 +424,10 @@
     <div class="ex" data-day="qui" data-key="qui2">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Stiff (halteres ou barra)</div>
-        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">Joelhos quase travados, quadril para trás, coluna neutra</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qui2-name">Stiff (halteres ou barra)</div>
+        <div class="pills" contenteditable="true" data-edit-key="qui2-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qui2-note">Joelhos quase travados, quadril para trás, coluna neutra</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui2-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui2-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -423,10 +438,10 @@
     <div class="ex" data-day="qui" data-key="qui3">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Supino inclinado c/ barra</div>
-        <div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
-        <div class="exnote">Inclinação ~30–45°</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qui3-name">Supino inclinado c/ barra</div>
+        <div class="pills" contenteditable="true" data-edit-key="qui3-pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qui3-note">Inclinação ~30–45°</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui3-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui3-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -437,10 +452,10 @@
     <div class="ex" data-day="qui" data-key="qui4">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Puxada c/ pegada neutra</div>
-        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 1:45</span></div>
-        <div class="exnote">Peito aberto, sem jogar o tronco para trás</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qui4-name">Puxada c/ pegada neutra</div>
+        <div class="pills" contenteditable="true" data-edit-key="qui4-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 1:45</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qui4-note">Peito aberto, sem jogar o tronco para trás</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui4-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui4-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -451,10 +466,10 @@
     <div class="ex" data-day="qui" data-key="qui5">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Elevação lateral na polia</div>
-        <div class="pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote">Tensão constante</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qui5-name">Elevação lateral na polia</div>
+        <div class="pills" contenteditable="true" data-edit-key="qui5-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qui5-note">Tensão constante</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui5-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui5-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -465,10 +480,10 @@
     <div class="ex" data-day="qui" data-key="qui6">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Tríceps francês</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote">Cotovelos apontando para cima</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="qui6-name">Tríceps francês</div>
+        <div class="pills" contenteditable="true" data-edit-key="qui6-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="qui6-note">Cotovelos apontando para cima</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui6-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui6-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -480,15 +495,15 @@
   <!-- SEXTA -->
   <div class="panel" id="panel-sex">
     <div class="daybar"><div class="track"><div class="fill" id="fill-sex"></div></div><span class="txt" id="txt-sex"></span><button class="resetbtn" data-day="sex">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔</p>
+    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
 
     <div class="ex" data-day="sex" data-key="sex1">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Elevação pélvica</div>
-        <div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">Contração máxima no topo, coluna neutra</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="sex1-name">Elevação pélvica</div>
+        <div class="pills" contenteditable="true" data-edit-key="sex1-pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="sex1-note">Contração máxima no topo, coluna neutra</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex1-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex1-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -499,10 +514,10 @@
     <div class="ex" data-day="sex" data-key="sex2">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Leg press 45°</div>
-        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">Vôlei amanhã — 1–2 reps de reserva</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="sex2-name">Leg press 45°</div>
+        <div class="pills" contenteditable="true" data-edit-key="sex2-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="sex2-note">Vôlei amanhã — 1–2 reps de reserva</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex2-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex2-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -513,10 +528,10 @@
     <div class="ex" data-day="sex" data-key="sex3">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Desenvolvimento c/ halteres</div>
-        <div class="pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">Antes: 2 séries leves de rotação de ombro na polia</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="sex3-name">Desenvolvimento c/ halteres</div>
+        <div class="pills" contenteditable="true" data-edit-key="sex3-pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="sex3-note">Antes: 2 séries leves de rotação de ombro na polia</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex3-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex3-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -527,10 +542,10 @@
     <div class="ex" data-day="sex" data-key="sex4">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Remada baixa c/ triângulo</div>
-        <div class="pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote">1s de contração no encurtamento</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="sex4-name">Remada baixa c/ triângulo</div>
+        <div class="pills" contenteditable="true" data-edit-key="sex4-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="sex4-note">1s de contração no encurtamento</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex4-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex4-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -541,10 +556,10 @@
     <div class="ex" data-day="sex" data-key="sex5">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Rosca direta (barra ou halteres)</div>
-        <div class="pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote">Sem balanço de tronco</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="sex5-name">Rosca direta (barra ou halteres)</div>
+        <div class="pills" contenteditable="true" data-edit-key="sex5-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="sex5-note">Sem balanço de tronco</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex5-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex5-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -555,10 +570,10 @@
     <div class="ex" data-day="sex" data-key="sex6">
       <span class="cbox">✓</span>
       <div class="ex-info">
-        <div class="exname">Panturrilha em pé no Smith</div>
-        <div class="pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote">2–3s alongado embaixo, em cada repetição</div>
-        <div class="ex-inputs" onclick="event.stopPropagation()">
+        <div class="exname" contenteditable="true" data-edit-key="sex6-name">Panturrilha em pé no Smith</div>
+        <div class="pills" contenteditable="true" data-edit-key="sex6-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
+        <div class="exnote" contenteditable="true" data-edit-key="sex6-note">2–3s alongado embaixo, em cada repetição</div>
+        <div class="ex-inputs">
           <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex6-kg" placeholder="—"><span class="unit">kg</span></div>
           <span class="sep">×</span>
           <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex6-reps" placeholder="—"><span class="unit">reps</span></div>
@@ -566,7 +581,7 @@
       </div>
     </div>
 
-    <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal infra 12–15 + Lenhador na polia 10/lado · ~45s entre rodadas</div>
+    <div class="abscard" contenteditable="true" data-edit-key="sex-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal infra 12–15 + Lenhador na polia 10/lado · ~45s entre rodadas</div>
   </div>
 
   <div class="card">
@@ -587,39 +602,34 @@
 <!-- ========== 04: PROGRESSÃO ========== -->
 <section id="progressao">
   <div class="sechead"><span class="secnum">04</span><h2>Progressão</h2></div>
-  <p class="lead">Dupla progressão: sobe repetição primeiro, carga depois. Sem técnicas que roubam tempo.</p>
-  <div class="card">
+  <p class="lead">Dupla progressão: sobe repetição primeiro, carga depois.</p>
+  <div class="card" contenteditable="true" data-edit-key="progressao-card">
     <ul class="clean">
       <li><b>1.</b> Escolha a carga que permita todas as séries no limite inferior da faixa (ex.: agachamento 4×6 com 80 kg)</li>
       <li><b>2.</b> Semanas seguintes: suba as repetições com a mesma carga (4×7 → 4×8…)</li>
       <li><b>3.</b> Ao bater o limite superior em todas as séries (4×10): +2,5–5% de carga e recomece do inferior</li>
-      <li><b>4.</b> Registre tudo (caderno ou app). Sem registro não existe progressão — só achismo</li>
+      <li><b>4.</b> Registre tudo. Sem registro não existe progressão — só achismo</li>
     </ul>
-  </div>
-  <div class="grid2">
-    <div class="note ok" style="margin:0"><b>📏 Regras</b>Maioria das séries com 1–2 reps de reserva (só a última de isoladores pode chegar perto da falha). Compostos progridem rápido; isoladores progridem devagar — normal.</div>
-    <div class="note attn" style="margin:0"><b>🔄 A cada 8 semanas</b>1 semana de deload (metade das séries ou −30% de carga). Back-off e rest-pause: só quando a progressão travar, na última série de 1 exercício, máx. 1–2x/semana.</div>
   </div>
 </section>
 
 <!-- ========== 05: DIETA ========== -->
 <section id="dieta">
-  <div class="sechead"><span class="secnum">05</span><h2>Dieta — análise e calorias</h2></div>
-  <p class="lead">Comparando suas avaliações (19/01 → 09/03): você ganhou 2,1 kg em ~7 semanas — massa magra subiu (+0,8 a +1,2 kg), mas cerca de metade do ganho foi gordura (cintura +5,5 cm, %GC ↑ nos dois métodos). O treino funcionou; a proporção é que pode melhorar.</p>
+  <div class="sechead"><span class="secnum">05</span><h2>Dieta — metas calóricas</h2></div>
+  <p class="lead" contenteditable="true" data-edit-key="dieta-lead">Toque nos números para ajustar sua meta calórica e dados de TMB conforme evoluir.</p>
   <div class="grid2">
     <div class="card">
-      <h3>🧮 Seus números (29 anos · 74,4 kg · rotina ativa)</h3>
-      <ul class="clean">
+      <h3>🧮 Seus números</h3>
+      <ul class="clean" contenteditable="true" data-edit-key="dieta-nums">
         <li>TMB (Mifflin-St Jeor): <b>~1.760 kcal</b></li>
-        <li>TMB (Katch-McArdle, MLG 60,6–62,3 kg): ~1.680–1.720 kcal</li>
-        <li>Manutenção com musculação 5x + vôlei 3x + corrida: <b>~2.800–3.000 kcal</b></li>
-        <li>Pelo seu ganho recente (~0,3 kg/sem), você vinha comendo ~2.950–3.050 kcal — superávit um pouco acima do ideal</li>
+        <li>Manutenção rotina ativa: <b>~2.800–3.000 kcal</b></li>
+        <li>Alvo semanal: <b>+0,2 a 0,25 kg/semana</b></li>
       </ul>
     </div>
     <div class="card">
-      <h3>🎯 Meta inicial</h3>
-      <p style="font-family:'Fraunces',Georgia,serif;font-size:2.3rem;font-weight:700;color:var(--green)">~3.000 kcal</p>
-      <p>Superávit de +150 a +250 kcal. Alvo: <b>0,2–0,25 kg/semana</b>. Nos dias de vôlei e corrida, adicione 1 carboidrato extra (~150–200 kcal: fruta + pão com mel, ou suco + banana) — o que manda é a média da semana.</p>
+      <h3>🎯 Meta diária</h3>
+      <p style="font-family:'Fraunces',Georgia,serif;font-size:2.3rem;font-weight:700;color:var(--green)" contenteditable="true" data-edit-key="dieta-meta-val">~3.000 kcal</p>
+      <p contenteditable="true" data-edit-key="dieta-meta-desc">Superávit de +150 a +250 kcal. Nos dias de vôlei e corrida, adicione carboidrato extra (~150–200 kcal).</p>
     </div>
   </div>
 </section>
@@ -629,96 +639,111 @@
   <div class="sechead"><span class="secnum">06</span><h2>Macros diários</h2></div>
   <div class="card">
     <div class="macroflex">
-      <div class="donut"><div class="hole"><div><b>3.000</b><br><span>kcal/dia</span></div></div></div>
+      <div class="donut"><div class="hole"><div><b contenteditable="true" data-edit-key="macro-kcal-hole">3.000</b><br><span>kcal/dia</span></div></div></div>
       <div style="flex:1;min-width:250px">
-        <div class="mrow"><span><span class="dot" style="background:var(--green)"></span><b>Proteína</b> · 30–40 g por refeição</span><b>150–160 g</b></div>
-        <div class="mrow"><span><span class="dot" style="background:var(--terra)"></span><b>Carboidrato</b> · mais perto do treino/vôlei</span><b>~420 g</b></div>
-        <div class="mrow"><span><span class="dot" style="background:var(--amber)"></span><b>Gordura</b> · nunca abaixo de 0,6 g/kg</span><b>~75 g</b></div>
+        <div class="mrow"><span><span class="dot" style="background:var(--green)"></span><b>Proteína</b> · 30–40 g/refeição</span><b contenteditable="true" data-edit-key="macro-prot-val">150–160 g</b></div>
+        <div class="mrow"><span><span class="dot" style="background:var(--terra)"></span><b>Carboidrato</b> · mais perto do treino</span><b contenteditable="true" data-edit-key="macro-carbo-val">~420 g</b></div>
+        <div class="mrow"><span><span class="dot" style="background:var(--amber)"></span><b>Gordura</b> · fonte boa</span><b contenteditable="true" data-edit-key="macro-fat-val">~75 g</b></div>
       </div>
     </div>
   </div>
-  <div class="card">
-    <h3>💊 Suplementos & horário variável de treino</h3>
-    <ul class="clean">
-      <li><b>Creatina:</b> 3–5 g, <b>todos os dias</b>, com ou sem treino, qualquer horário. Vai adicionar 0,5–1 kg de água nas semanas 1–2 — a balança sobe e estabiliza; <b>não é gordura, não corte calorias por causa disso</b></li>
-      <li><b>Whey:</b> 1 scoop (~24–30 g de proteína) na ceia ou pós-treino; nos dias de musculação + vôlei, use depois da musculação</li>
-      <li><b>Treino de manhã?</b> Fruta + whey 30–45 min antes resolve. <b>Treino à noite?</b> Almoço normal + lanche da tarde com carbo. O que importa é o dia inteiro, não a "janela anabólica"</li>
-      <li><b>Hidratação:</b> 2,5–3,5 L/dia — mais nos dias de vôlei e corrida</li>
-    </ul>
-  </div>
 </section>
 
-<!-- ========== 07: CARDÁPIO ========== -->
+<!-- ========== 07: CARDÁPIO (TOTALMENTE EDITÁVEL) ========== -->
 <section id="cardapio">
-  <div class="sechead"><span class="secnum">07</span><h2>Cardápio exemplo · ~3.000 kcal</h2></div>
-  <div class="meal"><div class="mhead"><span class="emoji">☕</span><span class="mtitle">Café da manhã</span><span class="p cal">~620 kcal · 25 g prot</span></div><div class="mbody"><p>Mingau: 250 ml de leite + 4 col. sopa de aveia + 1 banana + canela</p><p>2 ovos (cozidos ou omelete) · 1 fatia de pão integral com geleia</p></div></div>
-  <div class="meal"><div class="mhead"><span class="emoji">🍚</span><span class="mtitle">Almoço</span><span class="p cal">~800 kcal · 50 g prot</span></div><div class="mbody"><p>Arroz 200 g (~7 col. sopa) · feijão 1 concha grande</p><p>Frango grelhado 150–160 g (peso cozido) · salada à vontade + 1 col. sopa de azeite · 1 laranja</p></div></div>
-  <div class="meal"><div class="mhead"><span class="emoji">🥤</span><span class="mtitle">Lanche — pré/pós-treino</span><span class="p cal">~430 kcal · 16 g prot</span></div><div class="mbody"><p>Vitamina: 300 ml de leite + 1 banana + 2 col. sopa de aveia + 1 col. sopa de mel (ou pasta de amendoim)</p></div></div>
-  <div class="meal"><div class="mhead"><span class="emoji">🍽️</span><span class="mtitle">Jantar</span><span class="p cal">~770 kcal · 42 g prot</span></div><div class="mbody"><p>Arroz 200 g (ou macarrão 250 g cozido, ou batata-doce 250 g)</p><p>Carne magra 150 g (patinho, lombo ou tilápia) · legumes + salada + ½ col. azeite · 1 fatia de abacaxi</p></div></div>
-  <div class="meal"><div class="mhead"><span class="emoji">🌙</span><span class="mtitle">Ceia · com whey</span><span class="p cal">~380 kcal · 36 g prot</span></div><div class="mbody"><p>1 scoop de whey + iogurte natural 170 g + 2 col. sopa de granola + 1 fruta</p></div></div>
-  <div class="meal"><div class="mhead"><span class="emoji">🏐</span><span class="mtitle">Extra — dias de vôlei e corrida</span><span class="p cal">+150–200 kcal</span></div><div class="mbody"><p>1 fruta + 1 pão com mel, ou 1 suco + 1 banana (seg, qua, sáb, dom)</p></div></div>
-  <div class="note ok"><b>Total base: ~3.000–3.100 kcal · ~165 g de proteína</b>Arroz, pão e frutas são o seu "botão de calorias" — quem manda no final é a média semanal da balança.</div>
+  <div class="sechead"><span class="secnum">07</span><h2>Cardápio exemplo</h2></div>
+  <p class="lead">Toque em qualquer alimento para editar ou trocar ingredientes.</p>
+
+  <div class="meal">
+    <div class="mhead"><span class="emoji">☕</span><span class="mtitle" contenteditable="true" data-edit-key="meal1-title">Café da manhã</span><span class="p cal" contenteditable="true" data-edit-key="meal1-cal">~620 kcal · 25 g prot</span></div>
+    <div class="mbody" contenteditable="true" data-edit-key="meal1-body">
+      <p>Mingau: 250 ml de leite + 4 col. sopa de aveia + 1 banana + canela</p>
+      <p>2 ovos (cozidos ou omelete) · 1 fatia de pão integral com geleia</p>
+    </div>
+  </div>
+
+  <div class="meal">
+    <div class="mhead"><span class="emoji">🍚</span><span class="mtitle" contenteditable="true" data-edit-key="meal2-title">Almoço</span><span class="p cal" contenteditable="true" data-edit-key="meal2-cal">~800 kcal · 50 g prot</span></div>
+    <div class="mbody" contenteditable="true" data-edit-key="meal2-body">
+      <p>Arroz 200 g (~7 col. sopa) · feijão 1 concha grande</p>
+      <p>Frango grelhado 150–160 g (peso cozido) · salada à vontade + 1 col. sopa de azeite · 1 laranja</p>
+    </div>
+  </div>
+
+  <div class="meal">
+    <div class="mhead"><span class="emoji">🥤</span><span class="mtitle" contenteditable="true" data-edit-key="meal3-title">Lanche — pré/pós-treino</span><span class="p cal" contenteditable="true" data-edit-key="meal3-cal">~430 kcal · 16 g prot</span></div>
+    <div class="mbody" contenteditable="true" data-edit-key="meal3-body">
+      <p>Vitamina: 300 ml de leite + 1 banana + 2 col. sopa de aveia + 1 col. sopa de mel (ou pasta de amendoim)</p>
+    </div>
+  </div>
+
+  <div class="meal">
+    <div class="mhead"><span class="emoji">🍽️</span><span class="mtitle" contenteditable="true" data-edit-key="meal4-title">Jantar</span><span class="p cal" contenteditable="true" data-edit-key="meal4-cal">~770 kcal · 42 g prot</span></div>
+    <div class="mbody" contenteditable="true" data-edit-key="meal4-body">
+      <p>Arroz 200 g (ou macarrão 250 g cozido, ou batata-doce 250 g)</p>
+      <p>Carne magra 150 g (patinho, lombo ou tilápia) · legumes + salada + ½ col. azeite · 1 fatia de abacaxi</p>
+    </div>
+  </div>
+
+  <div class="meal">
+    <div class="mhead"><span class="emoji">🌙</span><span class="mtitle" contenteditable="true" data-edit-key="meal5-title">Ceia · com whey</span><span class="p cal" contenteditable="true" data-edit-key="meal5-cal">~380 kcal · 36 g prot</span></div>
+    <div class="mbody" contenteditable="true" data-edit-key="meal5-body">
+      <p>1 scoop de whey + iogurte natural 170 g + 2 col. sopa de granola + 1 fruta</p>
+    </div>
+  </div>
+
+  <div class="meal">
+    <div class="mhead"><span class="emoji">🏐</span><span class="mtitle" contenteditable="true" data-edit-key="meal6-title">Extra — dias de vôlei e corrida</span><span class="p cal" contenteditable="true" data-edit-key="meal6-cal">+150–200 kcal</span></div>
+    <div class="mbody" contenteditable="true" data-edit-key="meal6-body">
+      <p>1 fruta + 1 pão com mel, ou 1 suco + 1 banana (seg, qua, sáb, dom)</p>
+    </div>
+  </div>
 </section>
 
 <!-- ========== 08: TROCAS ========== -->
 <section id="trocas">
   <div class="sechead"><span class="secnum">08</span><h2>Substituições</h2></div>
-  <p class="lead">Troque dentro do mesmo grupo sem recalcular nada. Sem castanha-do-pará em nenhuma opção.</p>
+  <p class="lead">Toque em qualquer opção para personalizar seus alimentos equivalentes.</p>
+  
   <div class="card">
-    <h3>🥩 Proteínas <span class="p ghost">~35–45 g de proteína por porção</span></h3>
-    <div class="swaps"><span class="opt">150–160 g frango</span><span class="arr">↔</span><span class="opt">150 g patinho</span><span class="arr">↔</span><span class="opt">150 g tilápia/atum</span><span class="arr">↔</span><span class="opt">130 g lombo suíno</span><span class="arr">↔</span><span class="opt">5 ovos*</span><span class="arr">↔</span><span class="opt">1 scoop whey + 200 ml leite</span></div>
-    <p style="font-size:.75rem;color:var(--muted);margin-top:8px">* Ovos têm mais gordura — nesse dia, corte o azeite ou a pasta de amendoim.</p>
+    <h3>🥩 Proteínas</h3>
+    <div class="swaps" contenteditable="true" data-edit-key="trocas-proteina">
+      <span class="opt">150–160 g frango</span><span class="arr">↔</span>
+      <span class="opt">150 g patinho</span><span class="arr">↔</span>
+      <span class="opt">150 g tilápia/atum</span><span class="arr">↔</span>
+      <span class="opt">130 g lombo suíno</span><span class="arr">↔</span>
+      <span class="opt">5 ovos</span><span class="arr">↔</span>
+      <span class="opt">1 scoop whey + 200 ml leite</span>
+    </div>
   </div>
+
   <div class="card">
-    <h3>🍚 Carboidratos <span class="p ghost">~25–30 g de carbo por porção</span></h3>
-    <div class="swaps"><span class="opt">4 col. arroz</span><span class="arr">↔</span><span class="opt">1 pão francês</span><span class="arr">↔</span><span class="opt">2 fatias pão integral</span><span class="arr">↔</span><span class="opt">120 g batata-doce</span><span class="arr">↔</span><span class="opt">200 g batata inglesa</span><span class="arr">↔</span><span class="opt">5 col. macarrão cozido</span><span class="arr">↔</span><span class="opt">2 col. tapioca</span><span class="arr">↔</span><span class="opt">100 g cuscuz</span><span class="arr">↔</span><span class="opt">1 fruta média</span></div>
-  </div>
-  <div class="card">
-    <h3>🥑 Gorduras <span class="p ghost">~10 g por porção</span></h3>
-    <div class="swaps"><span class="opt">1 col. azeite</span><span class="arr">↔</span><span class="opt">1 col. pasta de amendoim</span><span class="arr">↔</span><span class="opt">10–12 amêndoas ou castanhas de caju</span><span class="arr">↔</span><span class="opt">⅓ abacate pequeno</span><span class="arr">↔</span><span class="opt">1 col. requeijão</span></div>
-    <p style="font-size:.75rem;color:var(--muted);margin-top:8px">Prefira embalagens puras de castanhas (evite mix — risco de contaminação com castanha-do-pará).</p>
-  </div>
-  <div class="card">
-    <h3>🔄 Refeições inteiras</h3>
-    <ul class="clean">
-      <li><b>Café:</b> mingau ↔ tapioca com 2 ovos ↔ cuscuz com ovos ↔ iogurte + granola + frutas</li>
-      <li><b>Lanche:</b> vitamina ↔ sanduíche integral com frango desfiado ↔ pão com pasta de amendoim + suco</li>
-      <li><b>Jantar:</b> sempre "1 proteína + 1 carbo + vegetais + gordura boa" — monte com os grupos acima</li>
-    </ul>
+    <h3>🍚 Carboidratos</h3>
+    <div class="swaps" contenteditable="true" data-edit-key="trocas-carbo">
+      <span class="opt">4 col. arroz</span><span class="arr">↔</span>
+      <span class="opt">1 pão francês</span><span class="arr">↔</span>
+      <span class="opt">2 fatias pão integral</span><span class="arr">↔</span>
+      <span class="opt">120 g batata-doce</span><span class="arr">↔</span>
+      <span class="opt">200 g batata inglesa</span><span class="arr">↔</span>
+      <span class="opt">5 col. macarrão cozido</span><span class="arr">↔</span>
+      <span class="opt">2 col. tapioca</span><span class="arr">↔</span>
+      <span class="opt">100 g cuscuz</span><span class="arr">↔</span>
+      <span class="opt">1 fruta média</span>
+    </div>
   </div>
 </section>
 
 <!-- ========== 09: ACOMPANHAMENTO ========== -->
 <section id="resultados">
   <div class="sechead"><span class="secnum">09</span><h2>Acompanhamento</h2></div>
-  <p class="lead">Pese-se todo dia (manhã, jejum, após o banheiro) e use a média semanal. As regras abaixo valem a partir da 3ª semana — as duas primeiras a balança vai subir mais rápido por creatina, glicogênio e água.</p>
-  <div class="decide" style="background:var(--green-soft);border-color:var(--green-line);color:var(--green-ink)"><span class="ic">✅</span><div><b>Ganhando 0,2–0,3 kg/semana</b>Não mexa em nada. Está exatamente no ponto.</div></div>
-  <div class="decide" style="background:var(--terra-soft);border-color:var(--terra-line);color:#7A3E20"><span class="ic">🔻</span><div><b>Ganhando &gt; 0,4 kg/semana</b>Reduza 150–200 kcal: tire ~40–50 g de carboidrato (ex.: 3 col. de arroz + 1 fruta).</div></div>
-  <div class="decide" style="background:var(--amber-soft);border-color:var(--amber-line);color:#6E5518"><span class="ic">🔺</span><div><b>Ganhando &lt; 0,1 kg/semana (por 2 semanas)</b>Aumente 150–200 kcal: ~40–50 g de carboidrato a mais. Mexa primeiro em carbo; proteína fica fixa.</div></div>
-  <div class="grid2" style="margin-top:12px">
-    <div class="card">
-      <h3>📏 A cada 2–3 semanas</h3>
-      <ul class="clean">
-        <li><b>Cintura no umbigo</b> = seu medidor de gordura caseiro. Subir mais de 1 cm/mês = superávit alto demais, mesmo com peso "ok"</li>
-        <li>Braço contraído, peito e coxa devem subir devagar</li>
-        <li>Fotos a cada 4 semanas (mesma luz, pose e horário)</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>🩺 A cada 8–10 semanas</h3>
-      <ul class="clean">
-        <li>Reavaliação (dobras/BIA), mesmo horário e hidratação</li>
-        <li>Compare <b>tendências</b>, não números isolados — dobras e bioimpedância vão continuar discordando entre si; o que importa é a direção de cada uma</li>
-        <li>Cargas subindo + cintura estável = ganho indo pro lugar certo</li>
-      </ul>
-    </div>
-  </div>
-  <div class="note act"><b>🎯 Sinais de sucesso em 8 semanas</b>+1,5 a 2 kg de peso · cargas subindo em quase tudo · braço/peito/coxa maiores · cintura no máximo +1–2 cm. E sono de 7–9 h: dormindo mal, a proporção músculo/gordura piora mesmo com dieta perfeita.</div>
+  <p class="lead">Pese-se todo dia pela manhã e compare as médias semanais.</p>
+  <div class="decide" style="background:var(--green-soft);border-color:var(--green-line);color:var(--green-ink)" contenteditable="true" data-edit-key="decide-ok"><span class="ic">✅</span><div><b>Ganhando 0,2–0,3 kg/semana</b>Não mexa em nada. Está no ponto ideal.</div></div>
+  <div class="decide" style="background:var(--terra-soft);border-color:var(--terra-line);color:#7A3E20" contenteditable="true" data-edit-key="decide-down"><span class="ic">🔻</span><div><b>Ganhando &gt; 0,4 kg/semana</b>Reduza 150–200 kcal: tire ~40–50 g de carboidrato.</div></div>
+  <div class="decide" style="background:var(--amber-soft);border-color:var(--amber-line);color:#6E5518" contenteditable="true" data-edit-key="decide-up"><span class="ic">🔺</span><div><b>Ganhando &lt; 0,1 kg/semana</b>Aumente 150–200 kcal: adicione ~40–50 g de carboidrato.</div></div>
 </section>
 
 <footer>
-  <p><b>Em uma frase:</b> Full Body 5× (45–60 min) com dias pesados na terça e quinta · ~3.000 kcal · 150–160 g de proteína · creatina todo dia · a média do peso manda nos ajustes de ±150–200 kcal.</p>
-  <p>Plano educativo baseado nos dados fornecidos — o acompanhamento presencial com educador físico e nutricionista continua sendo o ideal para execução e saúde.</p>
+  <p contenteditable="true" data-edit-key="footer-resumo"><b>Em uma frase:</b> Full Body 5× (45–60 min) · ~3.000 kcal · 150–160 g de proteína · creatina todo dia · a média do peso manda nos ajustes.</p>
 </footer>
 
 </main>

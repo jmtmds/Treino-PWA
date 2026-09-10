@@ -32,7 +32,11 @@ function update(day) {
 $$('.ex').forEach((c) => {
   const k = 'plano3:' + c.dataset.key;
   if (localStorage.getItem(k) === '1') c.classList.add('done');
-  c.addEventListener('click', () => {
+  c.addEventListener('click', (e) => {
+    // Evita alternar o status 'done' se o usuário estiver tocando/editando texto ou números
+    if (e.target.closest('[contenteditable="true"]') || e.target.closest('.ex-inputs')) {
+      return;
+    }
     c.classList.toggle('done');
     localStorage.setItem(k, c.classList.contains('done') ? '1' : '0');
     update(c.dataset.day);
@@ -41,7 +45,7 @@ $$('.ex').forEach((c) => {
 
 ['seg', 'ter', 'qua', 'qui', 'sex'].forEach(update);
 
-/* Botão de reset (limpa checks mantendo as anotações de carga) */
+/* Botão de reset de checks */
 $$('.resetbtn').forEach((b) => {
   b.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -55,7 +59,7 @@ $$('.resetbtn').forEach((b) => {
 });
 
 /* ----------------------------------------------------
-   3. PROGRESSÃO DE CARGA (INPUTS KG E REPS)
+   3. INPUTS DE CARGA E REPETIÇÕES (KG & REPS)
 ---------------------------------------------------- */
 $$('.track-val').forEach((input) => {
   const storageKey = 'plano3_val:' + input.dataset.key;
@@ -68,13 +72,34 @@ $$('.track-val').forEach((input) => {
 });
 
 /* ----------------------------------------------------
-   4. DIÁRIO: FEED CRONOLÓGICO COM DATA, HORA E TAGS
+   4. SISTEMA UNIVERSAL DE EDIÇÃO INLINE (LOCALSTORAGE)
+---------------------------------------------------- */
+$$('[data-edit-key]').forEach((el) => {
+  const storageKey = 'plano3_inline:' + el.dataset.editKey;
+  const savedText = localStorage.getItem(storageKey);
+  if (savedText !== null) {
+    el.innerText = savedText;
+  }
+
+  // Previne disparo de cards ao tocar para editar
+  el.addEventListener('click', (e) => e.stopPropagation());
+
+  // Salva no momento em que o usuário sai do campo
+  el.addEventListener('blur', () => {
+    localStorage.setItem(storageKey, el.innerText.trim());
+  });
+});
+
+/* ----------------------------------------------------
+   5. DIÁRIO: FEED COM CRIAR, EDITAR E DELETAR
 ---------------------------------------------------- */
 const diaryText = document.getElementById('diary-text');
 const submitBtn = document.getElementById('diary-submit');
+const cancelBtn = document.getElementById('diary-cancel');
 const feedContainer = document.getElementById('diary-feed');
+let editingId = null;
 
-// Seleção / Desmarcação de tags do formulário
+// Alternância de tags
 $$('.tag-btn').forEach((btn) => {
   btn.addEventListener('click', () => {
     btn.classList.toggle('active');
@@ -89,7 +114,6 @@ function saveDiaryEntries(entries) {
   localStorage.setItem('plano3_diary_entries', JSON.stringify(entries));
 }
 
-// Mapeamento de classe CSS por tag
 function getTagClass(tag) {
   switch (tag) {
     case 'Rendimento': return 'tag-rendimento';
@@ -100,11 +124,10 @@ function getTagClass(tag) {
   }
 }
 
-// Renderiza a lista de comentários
 function renderDiaryFeed() {
   const entries = getDiaryEntries();
   if (entries.length === 0) {
-    feedContainer.innerHTML = '<div class="diary-empty">Nenhum registro ainda. Anote suas percepções acima!</div>';
+    feedContainer.innerHTML = '<div class="diary-empty">Nenhum comentário adicionado ainda.</div>';
     return;
   }
 
@@ -120,7 +143,10 @@ function renderDiaryFeed() {
         <div class="diary-entry-card" data-id="${item.id}">
           <div class="diary-entry-header">
             <span class="diary-entry-date">${item.date}</span>
-            <button class="diary-delete-btn" onclick="deleteDiaryEntry(${item.id})">🗑️ Deletar</button>
+            <div class="diary-entry-btns">
+              <button class="diary-edit-btn" onclick="editDiaryEntry(${item.id})">✏️ Editar</button>
+              <button class="diary-delete-btn" onclick="deleteDiaryEntry(${item.id})">🗑️ Deletar</button>
+            </div>
           </div>
           ${tagHtml}
           <div class="diary-entry-body">${item.text}</div>
@@ -130,59 +156,104 @@ function renderDiaryFeed() {
     .join('');
 }
 
-// Salva um novo registro
+// Salvar ou Atualizar entrada
 submitBtn.addEventListener('click', () => {
   const text = diaryText.value.trim();
   const selectedTags = $$('.tag-btn.active').map((b) => b.dataset.tag);
 
   if (!text && selectedTags.length === 0) {
-    alert('Digite um comentário ou selecione pelo menos uma tag.');
+    alert('Digite um comentário ou selecione uma tag.');
     return;
   }
 
-  const now = new Date();
-  const dateStr =
-    now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
-    ' às ' +
-    now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-
-  const newEntry = {
-    id: Date.now(),
-    date: dateStr,
-    tags: selectedTags,
-    text: text || '(Sem texto — apenas tags registradas)'
-  };
-
   const entries = getDiaryEntries();
-  entries.unshift(newEntry); // Insere no início para os mais recentes ficarem no topo
+
+  if (editingId) {
+    // Modo Edição
+    const index = entries.findIndex((i) => i.id === editingId);
+    if (index !== -1) {
+      entries[index].text = text || '(Sem texto — apenas tags)';
+      entries[index].tags = selectedTags;
+      if (!entries[index].date.includes('(editado)')) {
+        entries[index].date += ' (editado)';
+      }
+    }
+    resetDiaryForm();
+  } else {
+    // Modo Criação
+    const now = new Date();
+    const dateStr =
+      now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
+      ' às ' +
+      now.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+
+    const newEntry = {
+      id: Date.now(),
+      date: dateStr,
+      tags: selectedTags,
+      text: text || '(Sem texto — apenas tags)'
+    };
+    entries.unshift(newEntry);
+    resetDiaryForm();
+  }
+
   saveDiaryEntries(entries);
-
-  // Limpa o formulário
-  diaryText.value = '';
-  $$('.tag-btn').forEach((b) => b.classList.remove('active'));
-
   renderDiaryFeed();
 });
 
-// Deletar comentário específico
+// Preparar formulário para edição
+window.editDiaryEntry = function (id) {
+  const entries = getDiaryEntries();
+  const target = entries.find((i) => i.id === id);
+  if (!target) return;
+
+  editingId = id;
+  diaryText.value = target.text.replace('(Sem texto — apenas tags)', '');
+
+  $$('.tag-btn').forEach((btn) => {
+    btn.classList.toggle('active', target.tags.includes(btn.dataset.tag));
+  });
+
+  submitBtn.textContent = 'Salvar Alteração';
+  cancelBtn.style.display = 'inline-block';
+
+  window.scrollTo({
+    top: document.getElementById('analise').offsetTop - 80,
+    behavior: 'smooth'
+  });
+  diaryText.focus();
+};
+
+// Cancelar modo de edição
+cancelBtn.addEventListener('click', resetDiaryForm);
+
+function resetDiaryForm() {
+  editingId = null;
+  diaryText.value = '';
+  $$('.tag-btn').forEach((b) => b.classList.remove('active'));
+  submitBtn.textContent = 'Salvar Registro';
+  cancelBtn.style.display = 'none';
+}
+
+// Excluir entrada do diário
 window.deleteDiaryEntry = function (id) {
   if (!confirm('Deseja excluir este registro?')) return;
   const entries = getDiaryEntries().filter((item) => item.id !== id);
   saveDiaryEntries(entries);
+  if (editingId === id) resetDiaryForm();
   renderDiaryFeed();
 };
 
-// Renderização inicial do diário
 renderDiaryFeed();
 
 /* ----------------------------------------------------
-   5. REGISTRO DO SERVICE WORKER (PWA OFFLINE)
+   6. REGISTRO DO SERVICE WORKER (PWA OFFLINE)
 ---------------------------------------------------- */
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('./sw.js')
       .then((reg) => console.log('SW registrado em:', reg.scope))
-      .catch((err) => console.error('Falha ao registrar SW:', err));
+      .catch((err) => console.error('Falha SW:', err));
   });
 }

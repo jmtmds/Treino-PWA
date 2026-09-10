@@ -47,6 +47,18 @@ body {
   padding: 0 18px;
 }
 
+/* ---------- CAMPOS EDITÁVEIS ---------- */
+[contenteditable="true"] {
+  outline: none;
+  border-radius: 4px;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+[contenteditable="true"]:focus {
+  background: #FFFDF8;
+  box-shadow: 0 0 0 2px var(--green-line);
+}
+
 /* ---------- HEADER ---------- */
 header {
   background: linear-gradient(180deg, #E9F0E8 0%, var(--bg) 100%);
@@ -91,6 +103,13 @@ h1 {
   font-size: .78rem;
   font-weight: 600;
   box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+}
+
+.schip .val {
+  font-weight: 700;
+  font-size: .85rem;
 }
 
 .schip small {
@@ -260,7 +279,7 @@ ul.clean li::before {
   color: #7A3E20;
 }
 
-/* ---------- NOVO SISTEMA DE DIÁRIO / HISTÓRICO ---------- */
+/* ---------- DIÁRIO & FEED CRONOLÓGICO ---------- */
 .diary-form {
   display: flex;
   flex-direction: column;
@@ -318,7 +337,7 @@ ul.clean li::before {
   border-radius: 14px;
   padding: 12px 14px;
   font-family: inherit;
-  font-size: 16px; /* Impede zoom no iOS */
+  font-size: 16px;
   color: var(--ink);
   line-height: 1.4;
   outline: none;
@@ -332,6 +351,7 @@ ul.clean li::before {
 
 .diary-actions {
   display: flex;
+  gap: 8px;
   justify-content: flex-end;
 }
 
@@ -354,7 +374,20 @@ ul.clean li::before {
   opacity: .85;
 }
 
-/* Feed de Comentários / Histórico */
+.diary-cancel-btn {
+  display: none;
+  background: var(--card);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 9px 16px;
+  font-size: .84rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
 .diary-feed {
   display: flex;
   flex-direction: column;
@@ -390,6 +423,28 @@ ul.clean li::before {
   font-size: .74rem;
   font-weight: 700;
   color: var(--muted);
+}
+
+.diary-entry-btns {
+  display: flex;
+  gap: 6px;
+}
+
+.diary-edit-btn {
+  background: none;
+  border: none;
+  color: var(--green);
+  font-size: .72rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.diary-edit-btn:hover {
+  background: var(--green-soft);
 }
 
 .diary-delete-btn {
@@ -697,7 +752,6 @@ ul.clean li::before {
   color: var(--muted);
 }
 
-/* Micro-Inputs de Carga e Reps no Treino */
 .ex-inputs {
   display: flex;
   align-items: center;
@@ -718,7 +772,7 @@ ul.clean li::before {
   width: 44px;
   border: none;
   background: transparent;
-  font-size: 16px; /* Impede zoom no iOS */
+  font-size: 16px;
   font-weight: 700;
   color: var(--ink);
   text-align: center;
