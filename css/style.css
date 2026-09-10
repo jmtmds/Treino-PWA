@@ -59,6 +59,28 @@ body {
   box-shadow: 0 0 0 2px var(--green-line);
 }
 
+/* Placeholders para cards vazios */
+.exname:empty:before {
+  content: "Nome do exercício...";
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.p.set:empty:before {
+  content: "Séries × Reps";
+  opacity: 0.6;
+}
+
+.p.rest:empty:before {
+  content: "⏱ Descanso";
+  opacity: 0.6;
+}
+
+.exnote:empty:before {
+  content: "Observações do exercício...";
+  color: var(--muted);
+}
+
 /* ---------- HEADER ---------- */
 header {
   background: linear-gradient(180deg, #E9F0E8 0%, var(--bg) 100%);
@@ -279,7 +301,7 @@ ul.clean li::before {
   color: #7A3E20;
 }
 
-/* ---------- DIÁRIO & FEED CRONOLÓGICO ---------- */
+/* ---------- DIÁRIO & FEED ---------- */
 .diary-form {
   display: flex;
   flex-direction: column;
@@ -570,6 +592,7 @@ ul.clean li::before {
   border-radius: 999px;
   padding: 3px 10px;
   letter-spacing: .02em;
+  min-height: 22px;
 }
 
 .p.set {
@@ -651,7 +674,7 @@ ul.clean li::before {
 .daybar {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 8px;
   margin: 6px 0 12px;
 }
 
@@ -678,6 +701,25 @@ ul.clean li::before {
   white-space: nowrap;
 }
 
+.addbtn {
+  background: var(--green);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: .7rem;
+  font-weight: 700;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px rgba(47,93,75,.2);
+}
+
+.addbtn:active {
+  opacity: .85;
+}
+
 .resetbtn {
   background: none;
   border: 1px solid var(--line);
@@ -689,6 +731,7 @@ ul.clean li::before {
   cursor: pointer;
   font-family: inherit;
   touch-action: manipulation;
+  white-space: nowrap;
 }
 
 .hint {
@@ -696,6 +739,11 @@ ul.clean li::before {
   color: var(--muted);
   text-align: center;
   margin: 2px 0 10px;
+}
+
+.ex-list {
+  display: flex;
+  flex-direction: column;
 }
 
 .ex {
@@ -735,9 +783,58 @@ ul.clean li::before {
   flex: 1;
 }
 
+.ex-head-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .ex .exname {
   font-weight: 700;
   font-size: .95rem;
+  flex: 1;
+  min-height: 22px;
+}
+
+.ex-btns {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.ex-edit-btn {
+  background: none;
+  border: none;
+  color: var(--green);
+  font-size: .7rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.ex-edit-btn:hover {
+  background: var(--green-soft);
+}
+
+.ex-delete-btn {
+  background: none;
+  border: none;
+  color: #A34839;
+  font-size: .7rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 3px 6px;
+  border-radius: 6px;
+  font-family: inherit;
+  touch-action: manipulation;
+}
+
+.ex-delete-btn:hover {
+  background: var(--terra-soft);
 }
 
 .ex .pills {
@@ -750,6 +847,7 @@ ul.clean li::before {
 .ex .exnote {
   font-size: .78rem;
   color: var(--muted);
+  min-height: 18px;
 }
 
 .ex-inputs {

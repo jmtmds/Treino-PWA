@@ -82,7 +82,7 @@
   <div class="note attn" contenteditable="true" data-edit-key="semana-note"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve. Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai.</div>
 </section>
 
-<!-- ========== 02: DIÁRIO DE TREINO (FEED COM EDIÇÃO E EXCLUSÃO) ========== -->
+<!-- ========== 02: DIÁRIO DE TREINO ========== -->
 <section id="analise">
   <div class="sechead"><span class="secnum">02</span><h2>Diário de Treino</h2></div>
   <p class="lead">Escreva suas percepções, selecione tags e salve. Você pode editar ou deletar qualquer registro a qualquer momento.</p>
@@ -106,10 +106,10 @@
   <div id="diary-feed" class="diary-feed"></div>
 </section>
 
-<!-- ========== 03: TREINO (TOTALMENTE EDITÁVEL) ========== -->
+<!-- ========== 03: TREINO (COM ADICIONAR, EDITAR E DELETAR) ========== -->
 <section id="treino">
   <div class="sechead"><span class="secnum">03</span><h2>O treino</h2></div>
-  <p class="lead">Toque no nome do exercício ou séries para alterar. Toque no card para marcar ✔ e digite suas cargas/repetições.</p>
+  <p class="lead">Use o botão <b>+ Adicionar</b> para criar exercícios novos ou toque em <b>✏️ Editar</b> e <b>🗑️ Deletar</b> para ajustar seus treinos.</p>
 
   <div class="card">
     <div class="grid2">
@@ -144,443 +144,64 @@
 
   <!-- SEGUNDA -->
   <div class="panel active" id="panel-seg">
-    <div class="daybar"><div class="track"><div class="fill" id="fill-seg"></div></div><span class="txt" id="txt-seg"></span><button class="resetbtn" data-day="seg">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
-    
-    <div class="ex" data-day="seg" data-key="seg1">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="seg1-name">Mesa flexora</div>
-        <div class="pills" contenteditable="true" data-edit-key="seg1-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="seg1-note">Leve para as pernas — você joga vôlei hoje</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg1-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg1-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
+    <div class="daybar">
+      <div class="track"><div class="fill" id="fill-seg"></div></div>
+      <span class="txt" id="txt-seg"></span>
+      <button class="addbtn" data-day="seg">+ Adicionar</button>
+      <button class="resetbtn" data-day="seg">limpar</button>
     </div>
-
-    <div class="ex" data-day="seg" data-key="seg2">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="seg2-name">Crossover na polia alta</div>
-        <div class="pills" contenteditable="true" data-edit-key="seg2-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="seg2-note">Foco na contração, leve cruzamento</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg2-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg2-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="seg" data-key="seg3">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="seg3-name">Remada alta na polia</div>
-        <div class="pills" contenteditable="true" data-edit-key="seg3-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="seg3-note">Cotovelos acima das mãos</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg3-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg3-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="seg" data-key="seg4">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="seg4-name">Face pull</div>
-        <div class="pills" contenteditable="true" data-edit-key="seg4-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="seg4-note">Puxe até a testa, gire os punhos para fora</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg4-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg4-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="seg" data-key="seg5">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="seg5-name">Tríceps unilateral na polia</div>
-        <div class="pills" contenteditable="true" data-edit-key="seg5-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="seg5-note">—</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg5-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg5-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="seg" data-key="seg6">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="seg6-name">Panturrilha no Smith c/ step</div>
-        <div class="pills" contenteditable="true" data-edit-key="seg6-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="seg6-note">2–3s alongado embaixo, em cada repetição</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="seg6-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="seg6-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
+    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <div class="ex-list" id="ex-list-seg"></div>
     <div class="abscard" contenteditable="true" data-edit-key="seg-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal remador 10–15 + Canivete alternado 10–12 · ~45s entre rodadas</div>
   </div>
 
   <!-- TERÇA -->
   <div class="panel" id="panel-ter">
-    <div class="daybar"><div class="track"><div class="fill" id="fill-ter"></div></div><span class="txt" id="txt-ter"></span><button class="resetbtn" data-day="ter">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
-
-    <div class="ex" data-day="ter" data-key="ter1">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="ter1-name">Agachamento no Smith</div>
-        <div class="pills" contenteditable="true" data-edit-key="ter1-pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="ter1-note">Paralela ou pouco abaixo · 1–2 reps de reserva · dia pesado de perna</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter1-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter1-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
+    <div class="daybar">
+      <div class="track"><div class="fill" id="fill-ter"></div></div>
+      <span class="txt" id="txt-ter"></span>
+      <button class="addbtn" data-day="ter">+ Adicionar</button>
+      <button class="resetbtn" data-day="ter">limpar</button>
     </div>
-
-    <div class="ex" data-day="ter" data-key="ter2">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="ter2-name">Supino reto com barra</div>
-        <div class="pills" contenteditable="true" data-edit-key="ter2-pills"><span class="p set">4 × 6–10</span><span class="p rest">⏱ 2:30</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="ter2-note">Escápulas retraídas, barra na linha do peito</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter2-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter2-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="ter" data-key="ter3">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="ter3-name">Puxada pronada</div>
-        <div class="pills" contenteditable="true" data-edit-key="ter3-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="ter3-note">Puxe com os cotovelos, não com as mãos</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter3-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter3-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="ter" data-key="ter4">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="ter4-name">Cadeira flexora</div>
-        <div class="pills" contenteditable="true" data-edit-key="ter4-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:30</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="ter4-note">Controle a volta, sem pico isométrico</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter4-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter4-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="ter" data-key="ter5">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="ter5-name">Elevação lateral c/ halteres</div>
-        <div class="pills" contenteditable="true" data-edit-key="ter5-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="ter5-note">Até a linha do ombro, sem encolher</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter5-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter5-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="ter" data-key="ter6">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="ter6-name">Tríceps na polia</div>
-        <div class="pills" contenteditable="true" data-edit-key="ter6-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="ter6-note">Cotovelos fixos ao lado do corpo</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="ter6-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="ter6-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
+    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <div class="ex-list" id="ex-list-ter"></div>
   </div>
 
   <!-- QUARTA -->
   <div class="panel" id="panel-qua">
-    <div class="daybar"><div class="track"><div class="fill" id="fill-qua"></div></div><span class="txt" id="txt-qua"></span><button class="resetbtn" data-day="qua">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
-
-    <div class="ex" data-day="qua" data-key="qua1">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qua1-name">Remada curvada supinada</div>
-        <div class="pills" contenteditable="true" data-edit-key="qua1-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qua1-note">Tronco ~45°, sem arredondar a lombar</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua1-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua1-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
+    <div class="daybar">
+      <div class="track"><div class="fill" id="fill-qua"></div></div>
+      <span class="txt" id="txt-qua"></span>
+      <button class="addbtn" data-day="qua">+ Adicionar</button>
+      <button class="resetbtn" data-day="qua">limpar</button>
     </div>
-
-    <div class="ex" data-day="qua" data-key="qua2">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qua2-name">Leg press 45°</div>
-        <div class="pills" contenteditable="true" data-edit-key="qua2-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qua2-note">Amplitude completa, sem soltar o quadril · intensidade moderada (vôlei hoje)</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua2-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua2-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qua" data-key="qua3">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qua3-name">Crucifixo na máquina</div>
-        <div class="pills" contenteditable="true" data-edit-key="qua3-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qua3-note">Excêntrica de 2–3s</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua3-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua3-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qua" data-key="qua4">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qua4-name">Cadeira abdutora</div>
-        <div class="pills" contenteditable="true" data-edit-key="qua4-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qua4-note">Tronco levemente à frente</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua4-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua4-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qua" data-key="qua5">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qua5-name">Supersérie: Crucifixo inverso + Rosca martelo</div>
-        <div class="pills" contenteditable="true" data-edit-key="qua5-pills"><span class="p set">12–15 + 10–12</span><span class="p rest">⏱ 1:30 após o par</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qua5-note">3 rodadas · economiza ~5 min</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qua5-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qua5-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
+    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <div class="ex-list" id="ex-list-qua"></div>
     <div class="abscard" contenteditable="true" data-edit-key="qua-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Supra no banco declinado 12–15 + Prancha 30–45s · ~45s entre rodadas</div>
   </div>
 
   <!-- QUINTA -->
   <div class="panel" id="panel-qui">
-    <div class="daybar"><div class="track"><div class="fill" id="fill-qui"></div></div><span class="txt" id="txt-qui"></span><button class="resetbtn" data-day="qui">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
-
-    <div class="ex" data-day="qui" data-key="qui1">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qui1-name">Agachamento hack</div>
-        <div class="pills" contenteditable="true" data-edit-key="qui1-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qui1-note">Fundo controlado, calcanhares no chão</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui1-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui1-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
+    <div class="daybar">
+      <div class="track"><div class="fill" id="fill-qui"></div></div>
+      <span class="txt" id="txt-qui"></span>
+      <button class="addbtn" data-day="qui">+ Adicionar</button>
+      <button class="resetbtn" data-day="qui">limpar</button>
     </div>
-
-    <div class="ex" data-day="qui" data-key="qui2">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qui2-name">Stiff (halteres ou barra)</div>
-        <div class="pills" contenteditable="true" data-edit-key="qui2-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qui2-note">Joelhos quase travados, quadril para trás, coluna neutra</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui2-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui2-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qui" data-key="qui3">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qui3-name">Supino inclinado c/ barra</div>
-        <div class="pills" contenteditable="true" data-edit-key="qui3-pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qui3-note">Inclinação ~30–45°</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui3-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui3-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qui" data-key="qui4">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qui4-name">Puxada c/ pegada neutra</div>
-        <div class="pills" contenteditable="true" data-edit-key="qui4-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 1:45</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qui4-note">Peito aberto, sem jogar o tronco para trás</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui4-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui4-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qui" data-key="qui5">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qui5-name">Elevação lateral na polia</div>
-        <div class="pills" contenteditable="true" data-edit-key="qui5-pills"><span class="p set">3 × 12–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qui5-note">Tensão constante</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui5-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui5-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="qui" data-key="qui6">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="qui6-name">Tríceps francês</div>
-        <div class="pills" contenteditable="true" data-edit-key="qui6-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="qui6-note">Cotovelos apontando para cima</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="qui6-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="qui6-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
+    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <div class="ex-list" id="ex-list-qui"></div>
   </div>
 
   <!-- SEXTA -->
   <div class="panel" id="panel-sex">
-    <div class="daybar"><div class="track"><div class="fill" id="fill-sex"></div></div><span class="txt" id="txt-sex"></span><button class="resetbtn" data-day="sex">limpar</button></div>
-    <p class="hint">toque no card para marcar ✔ · toque no texto para editar</p>
-
-    <div class="ex" data-day="sex" data-key="sex1">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="sex1-name">Elevação pélvica</div>
-        <div class="pills" contenteditable="true" data-edit-key="sex1-pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="sex1-note">Contração máxima no topo, coluna neutra</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex1-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex1-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
+    <div class="daybar">
+      <div class="track"><div class="fill" id="fill-sex"></div></div>
+      <span class="txt" id="txt-sex"></span>
+      <button class="addbtn" data-day="sex">+ Adicionar</button>
+      <button class="resetbtn" data-day="sex">limpar</button>
     </div>
-
-    <div class="ex" data-day="sex" data-key="sex2">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="sex2-name">Leg press 45°</div>
-        <div class="pills" contenteditable="true" data-edit-key="sex2-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="sex2-note">Vôlei amanhã — 1–2 reps de reserva</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex2-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex2-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="sex" data-key="sex3">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="sex3-name">Desenvolvimento c/ halteres</div>
-        <div class="pills" contenteditable="true" data-edit-key="sex3-pills"><span class="p set">4 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="sex3-note">Antes: 2 séries leves de rotação de ombro na polia</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex3-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex3-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="sex" data-key="sex4">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="sex4-name">Remada baixa c/ triângulo</div>
-        <div class="pills" contenteditable="true" data-edit-key="sex4-pills"><span class="p set">3 × 8–12</span><span class="p rest">⏱ 2:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="sex4-note">1s de contração no encurtamento</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex4-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex4-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="sex" data-key="sex5">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="sex5-name">Rosca direta (barra ou halteres)</div>
-        <div class="pills" contenteditable="true" data-edit-key="sex5-pills"><span class="p set">3 × 10–12</span><span class="p rest">⏱ 1:15</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="sex5-note">Sem balanço de tronco</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex5-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex5-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
-    <div class="ex" data-day="sex" data-key="sex6">
-      <span class="cbox">✓</span>
-      <div class="ex-info">
-        <div class="exname" contenteditable="true" data-edit-key="sex6-name">Panturrilha em pé no Smith</div>
-        <div class="pills" contenteditable="true" data-edit-key="sex6-pills"><span class="p set">3 × 10–15</span><span class="p rest">⏱ 1:00</span></div>
-        <div class="exnote" contenteditable="true" data-edit-key="sex6-note">2–3s alongado embaixo, em cada repetição</div>
-        <div class="ex-inputs">
-          <div class="input-box"><input type="number" inputmode="decimal" class="track-val" data-key="sex6-kg" placeholder="—"><span class="unit">kg</span></div>
-          <span class="sep">×</span>
-          <div class="input-box"><input type="number" inputmode="numeric" class="track-val" data-key="sex6-reps" placeholder="—"><span class="unit">reps</span></div>
-        </div>
-      </div>
-    </div>
-
+    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <div class="ex-list" id="ex-list-sex"></div>
     <div class="abscard" contenteditable="true" data-edit-key="sex-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal infra 12–15 + Lenhador na polia 10/lado · ~45s entre rodadas</div>
   </div>
 
@@ -649,7 +270,7 @@
   </div>
 </section>
 
-<!-- ========== 07: CARDÁPIO (TOTALMENTE EDITÁVEL) ========== -->
+<!-- ========== 07: CARDÁPIO ========== -->
 <section id="cardapio">
   <div class="sechead"><span class="secnum">07</span><h2>Cardápio exemplo</h2></div>
   <p class="lead">Toque em qualquer alimento para editar ou trocar ingredientes.</p>

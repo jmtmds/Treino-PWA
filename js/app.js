@@ -1,7 +1,63 @@
 const $$ = (s) => [...document.querySelectorAll(s)];
 
 /* ----------------------------------------------------
-   1. ABAS DOS DIAS DO TREINO
+   1. EXERCÍCIOS BASE E PERSISTÊNCIA DINÂMICA
+---------------------------------------------------- */
+const DEFAULT_EXERCISES = {
+  seg: [
+    { id: 'seg1', name: 'Mesa flexora', sets: '3 × 10–12', rest: '⏱ 1:30', note: 'Leve para as pernas — você joga vôlei hoje' },
+    { id: 'seg2', name: 'Crossover na polia alta', sets: '3 × 12–15', rest: '⏱ 1:15', note: 'Foco na contração, leve cruzamento' },
+    { id: 'seg3', name: 'Remada alta na polia', sets: '3 × 10–12', rest: '⏱ 1:30', note: 'Cotovelos acima das mãos' },
+    { id: 'seg4', name: 'Face pull', sets: '3 × 12–15', rest: '⏱ 1:00', note: 'Puxe até a testa, gire os punhos para fora' },
+    { id: 'seg5', name: 'Tríceps unilateral na polia', sets: '3 × 10–12', rest: '⏱ 1:15', note: '—' },
+    { id: 'seg6', name: 'Panturrilha no Smith c/ step', sets: '3 × 10–15', rest: '⏱ 1:00', note: '2–3s alongado embaixo, em cada repetição' }
+  ],
+  ter: [
+    { id: 'ter1', name: 'Agachamento no Smith', sets: '4 × 6–10', rest: '⏱ 2:30', note: 'Paralela ou pouco abaixo · 1–2 reps de reserva · dia pesado de perna' },
+    { id: 'ter2', name: 'Supino reto com barra', sets: '4 × 6–10', rest: '⏱ 2:30', note: 'Escápulas retraídas, barra na linha do peito' },
+    { id: 'ter3', name: 'Puxada pronada', sets: '3 × 8–12', rest: '⏱ 2:00', note: 'Puxe com os cotovelos, não com as mãos' },
+    { id: 'ter4', name: 'Cadeira flexora', sets: '3 × 10–12', rest: '⏱ 1:30', note: 'Controle a volta, sem pico isométrico' },
+    { id: 'ter5', name: 'Elevação lateral c/ halteres', sets: '3 × 10–15', rest: '⏱ 1:00', note: 'Até a linha do ombro, sem encolher' },
+    { id: 'ter6', name: 'Tríceps na polia', sets: '3 × 10–12', rest: '⏱ 1:15', note: 'Cotovelos fixos ao lado do corpo' }
+  ],
+  qua: [
+    { id: 'qua1', name: 'Remada curvada supinada', sets: '3 × 8–12', rest: '⏱ 2:15', note: 'Tronco ~45°, sem arredondar a lombar' },
+    { id: 'qua2', name: 'Leg press 45°', sets: '3 × 10–15', rest: '⏱ 2:00', note: 'Amplitude completa, sem soltar o quadril · intensidade moderada (vôlei hoje)' },
+    { id: 'qua3', name: 'Crucifixo na máquina', sets: '3 × 10–12', rest: '⏱ 1:15', note: 'Excêntrica de 2–3s' },
+    { id: 'qua4', name: 'Cadeira abdutora', sets: '3 × 12–15', rest: '⏱ 1:00', note: 'Tronco levemente à frente' },
+    { id: 'qua5', name: 'Supersérie: Crucifixo inverso + Rosca martelo', sets: '12–15 + 10–12', rest: '⏱ 1:30 após o par', note: '3 rodadas · economiza ~5 min' }
+  ],
+  qui: [
+    { id: 'qui1', name: 'Agachamento hack', sets: '3 × 8–12', rest: '⏱ 2:15', note: 'Fundo controlado, calcanhares no chão' },
+    { id: 'qui2', name: 'Stiff (halteres ou barra)', sets: '3 × 8–12', rest: '⏱ 2:00', note: 'Joelhos quase travados, quadril para trás, coluna neutra' },
+    { id: 'qui3', name: 'Supino inclinado c/ barra', sets: '4 × 8–12', rest: '⏱ 2:15', note: 'Inclinação ~30–45°' },
+    { id: 'qui4', name: 'Puxada c/ pegada neutra', sets: '3 × 8–12', rest: '⏱ 1:45', note: 'Peito aberto, sem jogar o tronco para trás' },
+    { id: 'qui5', name: 'Elevação lateral na polia', sets: '3 × 12–15', rest: '⏱ 1:00', note: 'Tensão constante' },
+    { id: 'qui6', name: 'Tríceps francês', sets: '3 × 10–12', rest: '⏱ 1:15', note: 'Cotovelos apontando para cima' }
+  ],
+  sex: [
+    { id: 'sex1', name: 'Elevação pélvica', sets: '4 × 8–12', rest: '⏱ 2:00', note: 'Contração máxima no topo, coluna neutra' },
+    { id: 'sex2', name: 'Leg press 45°', sets: '3 × 10–15', rest: '⏱ 2:00', note: 'Vôlei amanhã — 1–2 reps de reserva' },
+    { id: 'sex3', name: 'Desenvolvimento c/ halteres', sets: '4 × 8–12', rest: '⏱ 2:00', note: 'Antes: 2 séries leves de rotação de ombro na polia' },
+    { id: 'sex4', name: 'Remada baixa c/ triângulo', sets: '3 × 8–12', rest: '⏱ 2:00', note: '1s de contração no encurtamento' },
+    { id: 'sex5', name: 'Rosca direta (barra ou halteres)', sets: '3 × 10–12', rest: '⏱ 1:15', note: 'Sem balanço de tronco' },
+    { id: 'sex6', name: 'Panturrilha em pé no Smith', sets: '3 × 10–15', rest: '⏱ 1:00', note: '2–3s melhor alongado embaixo' }
+  ]
+};
+
+function getExercisesData() {
+  const saved = localStorage.getItem('plano3_exercises_data');
+  return saved ? JSON.parse(saved) : DEFAULT_EXERCISES;
+}
+
+function saveExercisesData(data) {
+  localStorage.setItem('plano3_exercises_data', JSON.stringify(data));
+}
+
+let exercisesState = getExercisesData();
+
+/* ----------------------------------------------------
+   2. ABAS DOS DIAS DO TREINO
 ---------------------------------------------------- */
 $$('.dtab').forEach((b) => {
   b.addEventListener('click', () => {
@@ -17,10 +73,103 @@ $$('.dtab').forEach((b) => {
 });
 
 /* ----------------------------------------------------
-   2. CHECKLIST DE EXERCÍCIOS E BARRA DE PROGRESSO
+   3. RENDERIZAÇÃO DOS CARDS DE TREINO
 ---------------------------------------------------- */
+function renderExercises(day) {
+  const container = document.getElementById('ex-list-' + day);
+  if (!container) return;
+
+  const list = exercisesState[day] || [];
+  container.innerHTML = list
+    .map((ex) => {
+      const isDone = localStorage.getItem('plano3:' + ex.id) === '1' ? 'done' : '';
+      const kgVal = localStorage.getItem('plano3_val:' + ex.id + '-kg') || '';
+      const repsVal = localStorage.getItem('plano3_val:' + ex.id + '-reps') || '';
+
+      return `
+        <div class="ex ${isDone}" data-day="${day}" data-id="${ex.id}">
+          <span class="cbox">✓</span>
+          <div class="ex-info">
+            <div class="ex-head-row">
+              <div class="exname" contenteditable="true" data-field="name">${ex.name}</div>
+              <div class="ex-btns">
+                <button type="button" class="ex-edit-btn" onclick="editExercise('${day}', '${ex.id}')">✏️ Editar</button>
+                <button type="button" class="ex-delete-btn" onclick="deleteExercise('${day}', '${ex.id}')">🗑️ Deletar</button>
+              </div>
+            </div>
+            <div class="pills">
+              <span class="p set" contenteditable="true" data-field="sets">${ex.sets}</span>
+              <span class="p rest" contenteditable="true" data-field="rest">${ex.rest}</span>
+            </div>
+            <div class="exnote" contenteditable="true" data-field="note">${ex.note}</div>
+            <div class="ex-inputs">
+              <div class="input-box">
+                <input type="number" inputmode="decimal" class="track-val" data-key="${ex.id}-kg" placeholder="—" value="${kgVal}">
+                <span class="unit">kg</span>
+              </div>
+              <span class="sep">×</span>
+              <div class="input-box">
+                <input type="number" inputmode="numeric" class="track-val" data-key="${ex.id}-reps" placeholder="—" value="${repsVal}">
+                <span class="unit">reps</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    })
+    .join('');
+
+  attachCardEvents(day);
+  update(day);
+}
+
+function attachCardEvents(day) {
+  const container = document.getElementById('ex-list-' + day);
+  if (!container) return;
+
+  // Toggle Concluído (Check)
+  container.querySelectorAll('.ex').forEach((card) => {
+    card.addEventListener('click', (e) => {
+      if (
+        e.target.closest('[contenteditable="true"]') ||
+        e.target.closest('.ex-inputs') ||
+        e.target.closest('.ex-btns')
+      ) {
+        return;
+      }
+      card.classList.toggle('done');
+      const isDone = card.classList.contains('done');
+      localStorage.setItem('plano3:' + card.dataset.id, isDone ? '1' : '0');
+      update(day);
+    });
+  });
+
+  // Salvar textos editados no card
+  container.querySelectorAll('[contenteditable="true"]').forEach((field) => {
+    field.addEventListener('click', (e) => e.stopPropagation());
+    field.addEventListener('blur', () => {
+      const card = field.closest('.ex');
+      const id = card.dataset.id;
+      const keyName = field.dataset.field;
+      const target = exercisesState[day].find((x) => x.id === id);
+      if (target) {
+        target[keyName] = field.innerText.trim();
+        saveExercisesData(exercisesState);
+      }
+    });
+  });
+
+  // Salvar inputs de kg e reps
+  container.querySelectorAll('.track-val').forEach((input) => {
+    input.addEventListener('click', (e) => e.stopPropagation());
+    input.addEventListener('input', () => {
+      localStorage.setItem('plano3_val:' + input.dataset.key, input.value.trim());
+    });
+  });
+}
+
 function update(day) {
-  const all = $$('.ex[data-day="' + day + '"]');
+  const all = $$('#ex-list-' + day + ' .ex');
   const done = all.filter((c) => c.classList.contains('done')).length;
   const pct = all.length ? Math.round((done / all.length) * 100) : 0;
   const fill = document.getElementById('fill-' + day);
@@ -29,47 +178,71 @@ function update(day) {
   if (txt) txt.textContent = done + '/' + all.length;
 }
 
-$$('.ex').forEach((c) => {
-  const k = 'plano3:' + c.dataset.key;
-  if (localStorage.getItem(k) === '1') c.classList.add('done');
-  c.addEventListener('click', (e) => {
-    // Evita alternar o status 'done' se o usuário estiver tocando/editando texto ou números
-    if (e.target.closest('[contenteditable="true"]') || e.target.closest('.ex-inputs')) {
-      return;
-    }
-    c.classList.toggle('done');
-    localStorage.setItem(k, c.classList.contains('done') ? '1' : '0');
-    update(c.dataset.day);
+/* Adicionar card limpo */
+$$('.addbtn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const day = btn.dataset.day;
+    const newEx = {
+      id: 'ex_' + Date.now(),
+      name: '',
+      sets: '',
+      rest: '',
+      note: ''
+    };
+    if (!exercisesState[day]) exercisesState[day] = [];
+    exercisesState[day].push(newEx);
+    saveExercisesData(exercisesState);
+    renderExercises(day);
+
+    // Foca imediatamente no nome do novo exercício
+    setTimeout(() => {
+      const newCard = document.querySelector(`.ex[data-id="${newEx.id}"] .exname`);
+      if (newCard) newCard.focus();
+    }, 50);
   });
 });
 
-['seg', 'ter', 'qua', 'qui', 'sex'].forEach(update);
+/* Focar para edição */
+window.editExercise = function (day, id) {
+  const card = document.querySelector(`.ex[data-id="${id}"]`);
+  if (!card) return;
+  const nameEl = card.querySelector('.exname');
+  if (nameEl) {
+    nameEl.focus();
+    const range = document.createRange();
+    range.selectNodeContents(nameEl);
+    const sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+  }
+};
 
-/* Botão de reset de checks */
+/* Deletar card */
+window.deleteExercise = function (day, id) {
+  if (!confirm('Deseja excluir este exercício?')) return;
+  exercisesState[day] = exercisesState[day].filter((x) => x.id !== id);
+  saveExercisesData(exercisesState);
+  localStorage.removeItem('plano3:' + id);
+  localStorage.removeItem('plano3_val:' + id + '-kg');
+  localStorage.removeItem('plano3_val:' + id + '-reps');
+  renderExercises(day);
+};
+
+/* Botão de reset (limpa apenas checks) */
 $$('.resetbtn').forEach((b) => {
   b.addEventListener('click', (e) => {
     e.stopPropagation();
     const day = b.dataset.day;
-    $$('.ex[data-day="' + day + '"]').forEach((c) => {
+    $$('#ex-list-' + day + ' .ex').forEach((c) => {
       c.classList.remove('done');
-      localStorage.removeItem('plano3:' + c.dataset.key);
+      localStorage.removeItem('plano3:' + c.dataset.id);
     });
     update(day);
   });
 });
 
-/* ----------------------------------------------------
-   3. INPUTS DE CARGA E REPETIÇÕES (KG & REPS)
----------------------------------------------------- */
-$$('.track-val').forEach((input) => {
-  const storageKey = 'plano3_val:' + input.dataset.key;
-  const savedVal = localStorage.getItem(storageKey);
-  if (savedVal !== null) input.value = savedVal;
-
-  input.addEventListener('input', () => {
-    localStorage.setItem(storageKey, input.value.trim());
-  });
-});
+// Renderização inicial dos treinos
+['seg', 'ter', 'qua', 'qui', 'sex'].forEach(renderExercises);
 
 /* ----------------------------------------------------
    4. SISTEMA UNIVERSAL DE EDIÇÃO INLINE (LOCALSTORAGE)
@@ -77,14 +250,9 @@ $$('.track-val').forEach((input) => {
 $$('[data-edit-key]').forEach((el) => {
   const storageKey = 'plano3_inline:' + el.dataset.editKey;
   const savedText = localStorage.getItem(storageKey);
-  if (savedText !== null) {
-    el.innerText = savedText;
-  }
+  if (savedText !== null) el.innerText = savedText;
 
-  // Previne disparo de cards ao tocar para editar
   el.addEventListener('click', (e) => e.stopPropagation());
-
-  // Salva no momento em que o usuário sai do campo
   el.addEventListener('blur', () => {
     localStorage.setItem(storageKey, el.innerText.trim());
   });
@@ -99,11 +267,8 @@ const cancelBtn = document.getElementById('diary-cancel');
 const feedContainer = document.getElementById('diary-feed');
 let editingId = null;
 
-// Alternância de tags
 $$('.tag-btn').forEach((btn) => {
-  btn.addEventListener('click', () => {
-    btn.classList.toggle('active');
-  });
+  btn.addEventListener('click', () => btn.classList.toggle('active'));
 });
 
 function getDiaryEntries() {
@@ -156,7 +321,6 @@ function renderDiaryFeed() {
     .join('');
 }
 
-// Salvar ou Atualizar entrada
 submitBtn.addEventListener('click', () => {
   const text = diaryText.value.trim();
   const selectedTags = $$('.tag-btn.active').map((b) => b.dataset.tag);
@@ -169,7 +333,6 @@ submitBtn.addEventListener('click', () => {
   const entries = getDiaryEntries();
 
   if (editingId) {
-    // Modo Edição
     const index = entries.findIndex((i) => i.id === editingId);
     if (index !== -1) {
       entries[index].text = text || '(Sem texto — apenas tags)';
@@ -180,7 +343,6 @@ submitBtn.addEventListener('click', () => {
     }
     resetDiaryForm();
   } else {
-    // Modo Criação
     const now = new Date();
     const dateStr =
       now.toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', year: 'numeric' }) +
@@ -201,7 +363,6 @@ submitBtn.addEventListener('click', () => {
   renderDiaryFeed();
 });
 
-// Preparar formulário para edição
 window.editDiaryEntry = function (id) {
   const entries = getDiaryEntries();
   const target = entries.find((i) => i.id === id);
@@ -224,7 +385,6 @@ window.editDiaryEntry = function (id) {
   diaryText.focus();
 };
 
-// Cancelar modo de edição
 cancelBtn.addEventListener('click', resetDiaryForm);
 
 function resetDiaryForm() {
@@ -235,7 +395,6 @@ function resetDiaryForm() {
   cancelBtn.style.display = 'none';
 }
 
-// Excluir entrada do diário
 window.deleteDiaryEntry = function (id) {
   if (!confirm('Deseja excluir este registro?')) return;
   const entries = getDiaryEntries().filter((item) => item.id !== id);
