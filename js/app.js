@@ -1,7 +1,7 @@
 const $$ = (s) => [...document.querySelectorAll(s)];
 
 /* ----------------------------------------------------
-   1. EXERCÍCIOS BASE E PERSISTÊNCIA DINÂMICA
+   1. BASE DE EXERCÍCIOS & LOCALSTORAGE DINÂMICO
 ---------------------------------------------------- */
 const DEFAULT_EXERCISES = {
   seg: [
@@ -41,7 +41,7 @@ const DEFAULT_EXERCISES = {
     { id: 'sex3', name: 'Desenvolvimento c/ halteres', sets: '4 × 8–12', rest: '⏱ 2:00', note: 'Antes: 2 séries leves de rotação de ombro na polia' },
     { id: 'sex4', name: 'Remada baixa c/ triângulo', sets: '3 × 8–12', rest: '⏱ 2:00', note: '1s de contração no encurtamento' },
     { id: 'sex5', name: 'Rosca direta (barra ou halteres)', sets: '3 × 10–12', rest: '⏱ 1:15', note: 'Sem balanço de tronco' },
-    { id: 'sex6', name: 'Panturrilha em pé no Smith', sets: '3 × 10–15', rest: '⏱ 1:00', note: '2–3s melhor alongado embaixo' }
+    { id: 'sex6', name: 'Panturrilha em pé no Smith', sets: '3 × 10–15', rest: '⏱ 1:00', note: '2–3s alongado embaixo, em cada repetição' }
   ]
 };
 
@@ -73,7 +73,7 @@ $$('.dtab').forEach((b) => {
 });
 
 /* ----------------------------------------------------
-   3. RENDERIZAÇÃO DOS CARDS DE TREINO
+   3. RENDERIZAÇÃO E EVENTOS DOS CARDS (03)
 ---------------------------------------------------- */
 function renderExercises(day) {
   const container = document.getElementById('ex-list-' + day);
@@ -127,7 +127,7 @@ function attachCardEvents(day) {
   const container = document.getElementById('ex-list-' + day);
   if (!container) return;
 
-  // Toggle Concluído (Check)
+  // Marcar card como concluído
   container.querySelectorAll('.ex').forEach((card) => {
     card.addEventListener('click', (e) => {
       if (
@@ -144,7 +144,7 @@ function attachCardEvents(day) {
     });
   });
 
-  // Salvar textos editados no card
+  // Salvar edições de texto direto nos cards
   container.querySelectorAll('[contenteditable="true"]').forEach((field) => {
     field.addEventListener('click', (e) => e.stopPropagation());
     field.addEventListener('blur', () => {
@@ -159,7 +159,7 @@ function attachCardEvents(day) {
     });
   });
 
-  // Salvar inputs de kg e reps
+  // Salvar valores dos inputs kg e reps
   container.querySelectorAll('.track-val').forEach((input) => {
     input.addEventListener('click', (e) => e.stopPropagation());
     input.addEventListener('input', () => {
@@ -178,7 +178,7 @@ function update(day) {
   if (txt) txt.textContent = done + '/' + all.length;
 }
 
-/* Adicionar card limpo */
+// Botão + Adicionar Card Limpo
 $$('.addbtn').forEach((btn) => {
   btn.addEventListener('click', () => {
     const day = btn.dataset.day;
@@ -194,15 +194,15 @@ $$('.addbtn').forEach((btn) => {
     saveExercisesData(exercisesState);
     renderExercises(day);
 
-    // Foca imediatamente no nome do novo exercício
+    // Foca imediatamente no nome do novo exercício adicionado
     setTimeout(() => {
       const newCard = document.querySelector(`.ex[data-id="${newEx.id}"] .exname`);
       if (newCard) newCard.focus();
-    }, 50);
+    }, 60);
   });
 });
 
-/* Focar para edição */
+// Botão Editar do Card
 window.editExercise = function (day, id) {
   const card = document.querySelector(`.ex[data-id="${id}"]`);
   if (!card) return;
@@ -217,7 +217,7 @@ window.editExercise = function (day, id) {
   }
 };
 
-/* Deletar card */
+// Botão Deletar do Card
 window.deleteExercise = function (day, id) {
   if (!confirm('Deseja excluir este exercício?')) return;
   exercisesState[day] = exercisesState[day].filter((x) => x.id !== id);
@@ -228,7 +228,7 @@ window.deleteExercise = function (day, id) {
   renderExercises(day);
 };
 
-/* Botão de reset (limpa apenas checks) */
+// Botão Limpar Checks do Dia
 $$('.resetbtn').forEach((b) => {
   b.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -241,7 +241,7 @@ $$('.resetbtn').forEach((b) => {
   });
 });
 
-// Renderização inicial dos treinos
+// Renderização inicial de todos os dias da semana
 ['seg', 'ter', 'qua', 'qui', 'sex'].forEach(renderExercises);
 
 /* ----------------------------------------------------
@@ -259,7 +259,7 @@ $$('[data-edit-key]').forEach((el) => {
 });
 
 /* ----------------------------------------------------
-   5. DIÁRIO: FEED COM CRIAR, EDITAR E DELETAR
+   5. DIÁRIO (02): FEED COM CRIAR, EDITAR E DELETAR
 ---------------------------------------------------- */
 const diaryText = document.getElementById('diary-text');
 const submitBtn = document.getElementById('diary-submit');

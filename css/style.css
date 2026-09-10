@@ -47,7 +47,7 @@ body {
   padding: 0 18px;
 }
 
-/* ---------- CAMPOS EDITÁVEIS ---------- */
+/* ---------- CAMPOS EDITÁVEIS & PLACEHOLDERS ---------- */
 [contenteditable="true"] {
   outline: none;
   border-radius: 4px;
@@ -59,7 +59,6 @@ body {
   box-shadow: 0 0 0 2px var(--green-line);
 }
 
-/* Placeholders para cards vazios */
 .exname:empty:before {
   content: "Nome do exercício...";
   color: var(--muted);
@@ -77,8 +76,9 @@ body {
 }
 
 .exnote:empty:before {
-  content: "Observações do exercício...";
+  content: "Observações...";
   color: var(--muted);
+  font-style: italic;
 }
 
 /* ---------- HEADER ---------- */
@@ -301,7 +301,7 @@ ul.clean li::before {
   color: #7A3E20;
 }
 
-/* ---------- DIÁRIO & FEED ---------- */
+/* ---------- DIÁRIO (02) ---------- */
 .diary-form {
   display: flex;
   flex-direction: column;
@@ -584,25 +584,35 @@ ul.clean li::before {
   color: var(--muted);
 }
 
-/* ---------- PILLS ---------- */
+/* ---------- PILLS DOS CARDS ---------- */
+.pills {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 6px 0 4px;
+}
+
 .p {
-  display: inline-block;
-  font-size: .7rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: .72rem;
   font-weight: 700;
   border-radius: 999px;
-  padding: 3px 10px;
+  padding: 4px 10px;
   letter-spacing: .02em;
-  min-height: 22px;
+  min-height: 24px;
 }
 
 .p.set {
   background: var(--green-soft);
   color: var(--green-ink);
+  border: 1px solid var(--green-line);
 }
 
 .p.rest {
   background: var(--amber-soft);
   color: #6E5518;
+  border: 1px solid var(--amber-line);
 }
 
 .p.cal {
@@ -615,7 +625,7 @@ ul.clean li::before {
   color: var(--muted);
 }
 
-/* ---------- TREINO ---------- */
+/* ---------- TREINO (03) ---------- */
 .tabs {
   display: flex;
   gap: 8px;
@@ -701,19 +711,21 @@ ul.clean li::before {
   white-space: nowrap;
 }
 
+/* Botão + Adicionar no Daybar */
 .addbtn {
   background: var(--green);
   color: #fff;
   border: none;
   border-radius: 999px;
-  font-size: .7rem;
+  font-size: .72rem;
   font-weight: 700;
-  padding: 5px 12px;
+  padding: 6px 13px;
   cursor: pointer;
   font-family: inherit;
   touch-action: manipulation;
   white-space: nowrap;
-  box-shadow: 0 2px 6px rgba(47,93,75,.2);
+  box-shadow: 0 2px 6px rgba(47,93,75,.25);
+  transition: opacity .15s;
 }
 
 .addbtn:active {
@@ -797,6 +809,7 @@ ul.clean li::before {
   min-height: 22px;
 }
 
+/* Botões Editar / Deletar do Card de Treino */
 .ex-btns {
   display: flex;
   gap: 4px;
@@ -807,10 +820,10 @@ ul.clean li::before {
   background: none;
   border: none;
   color: var(--green);
-  font-size: .7rem;
+  font-size: .72rem;
   font-weight: 700;
   cursor: pointer;
-  padding: 3px 6px;
+  padding: 4px 7px;
   border-radius: 6px;
   font-family: inherit;
   touch-action: manipulation;
@@ -824,10 +837,10 @@ ul.clean li::before {
   background: none;
   border: none;
   color: #A34839;
-  font-size: .7rem;
+  font-size: .72rem;
   font-weight: 600;
   cursor: pointer;
-  padding: 3px 6px;
+  padding: 4px 7px;
   border-radius: 6px;
   font-family: inherit;
   touch-action: manipulation;
@@ -835,13 +848,6 @@ ul.clean li::before {
 
 .ex-delete-btn:hover {
   background: var(--terra-soft);
-}
-
-.ex .pills {
-  display: flex;
-  gap: 6px;
-  flex-wrap: wrap;
-  margin: 6px 0 4px;
 }
 
 .ex .exnote {
