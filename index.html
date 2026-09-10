@@ -22,30 +22,33 @@
 </head>
 <body>
 
-<header>
+<header id="sec-header">
   <div class="wrap">
-    <p class="eyebrow" contenteditable="true" data-edit-key="header-eyebrow">Plano personalizado · 29 anos · rotina ativa</p>
-    <h1 class="serif" contenteditable="true" data-edit-key="header-title">Hipertrofia em 45–60 min, dentro da sua semana real.</h1>
-    <p class="sub" contenteditable="true" data-edit-key="header-sub">Full Body 5× na musculação + vôlei seg/qua/sáb + corrida leve no domingo · superávit controlado para ganhar massa com o mínimo de gordura.</p>
+    <div class="header-top-row">
+      <p class="eyebrow" data-edit-item="header-eyebrow">Plano personalizado · 29 anos · rotina ativa</p>
+      <button class="sec-edit-btn" data-target="sec-header">✏️ Editar Perfil</button>
+    </div>
+    <h1 class="serif" data-edit-item="header-title">Hipertrofia em 45–60 min, dentro da sua semana real.</h1>
+    <p class="sub" data-edit-item="header-sub">Full Body 5× na musculação + vôlei seg/qua/sáb + corrida leve no domingo · superávit controlado para ganhar massa com o mínimo de gordura.</p>
     <div class="statchips">
       <span class="schip">
-        <span class="val" contenteditable="true" data-edit-key="chip-peso">74,4 kg</span>
+        <span class="val" data-edit-item="chip-peso">74,4 kg</span>
         <small>peso atual</small>
       </span>
       <span class="schip">
-        <span class="val" contenteditable="true" data-edit-key="chip-altura">1,85 m</span>
+        <span class="val" data-edit-item="chip-altura">1,85 m</span>
         <small>altura</small>
       </span>
       <span class="schip">
-        <span class="val" contenteditable="true" data-edit-key="chip-kcal">~3.000 kcal</span>
+        <span class="val" data-edit-item="chip-kcal">~3.000 kcal</span>
         <small>meta diária</small>
       </span>
       <span class="schip">
-        <span class="val" contenteditable="true" data-edit-key="chip-prot">150–160 g</span>
+        <span class="val" data-edit-item="chip-prot">150–160 g</span>
         <small>proteína</small>
       </span>
       <span class="schip">
-        <span class="val" contenteditable="true" data-edit-key="chip-tempo">45–60 min</span>
+        <span class="val" data-edit-item="chip-tempo">45–60 min</span>
         <small>por sessão</small>
       </span>
     </div>
@@ -68,23 +71,32 @@
 
 <!-- ========== 01: SEMANA ========== -->
 <section id="semana">
-  <div class="sechead"><span class="secnum">01</span><h2>Sua semana</h2></div>
-  <p class="lead" contenteditable="true" data-edit-key="semana-lead">Treinos pesados de perna ficaram nas terças e quintas — os únicos dias sem vôlei. Segunda e quarta são sessões leves/moderadas para não sabotar a quadra.</p>
-  <div class="weekgrid">
-    <div class="wday"><span class="dn">Seg</span><span class="wtag gym">Leve · 45′</span><span class="wtag sport">🏐 Vôlei</span><small>abdômen ✓</small></div>
-    <div class="wday"><span class="dn">Ter</span><span class="wtag gym heavy">Base pesada · 60′</span><small>dia do agachamento</small></div>
-    <div class="wday"><span class="dn">Qua</span><span class="wtag gym">Costas & peito · 50′</span><span class="wtag sport">🏐 Vôlei</span><small>abdômen ✓</small></div>
-    <div class="wday"><span class="dn">Qui</span><span class="wtag gym heavy">Pernas & inclinado · 55′</span><small>hack + stiff</small></div>
-    <div class="wday"><span class="dn">Sex</span><span class="wtag gym">Glúteos & ombros · 50′</span><small>abdômen ✓</small></div>
-    <div class="wday"><span class="dn">Sáb</span><span class="wtag sport">🏐 Vôlei</span><small>sem musculação</small></div>
-    <div class="wday"><span class="dn">Dom</span><span class="wtag rest">🏃 Corrida leve</span><small>20–30′ · Z2</small></div>
+  <div class="sechead">
+    <span class="secnum">01</span>
+    <h2>Sua semana</h2>
+    <button class="sec-edit-btn" data-target="box-semana">✏️ Editar</button>
   </div>
-  <div class="note attn" contenteditable="true" data-edit-key="semana-note"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve. Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai.</div>
+  <div id="box-semana">
+    <p class="lead" data-edit-item="semana-lead">Treinos pesados de perna ficaram nas terças e quintas — os únicos dias sem vôlei. Segunda e quarta são sessões leves/moderadas para não sabotar a quadra.</p>
+    <div class="weekgrid">
+      <div class="wday"><span class="dn">Seg</span><span class="wtag gym">Leve · 45′</span><span class="wtag sport">🏐 Vôlei</span><small>abdômen ✓</small></div>
+      <div class="wday"><span class="dn">Ter</span><span class="wtag gym heavy">Base pesada · 60′</span><small>dia do agachamento</small></div>
+      <div class="wday"><span class="dn">Qua</span><span class="wtag gym">Costas & peito · 50′</span><span class="wtag sport">🏐 Vôlei</span><small>abdômen ✓</small></div>
+      <div class="wday"><span class="dn">Qui</span><span class="wtag gym heavy">Pernas & inclinado · 55′</span><small>hack + stiff</small></div>
+      <div class="wday"><span class="dn">Sex</span><span class="wtag gym">Glúteos & ombros · 50′</span><small>abdômen ✓</small></div>
+      <div class="wday"><span class="dn">Sáb</span><span class="wtag sport">🏐 Vôlei</span><small>sem musculação</small></div>
+      <div class="wday"><span class="dn">Dom</span><span class="wtag rest">🏃 Corrida leve</span><small>20–30′ · Z2</small></div>
+    </div>
+    <div class="note attn" data-edit-item="semana-note"><b>⚠️ Recuperação — seu ponto de atenção</b>São ~9 sessões/semana sem folga completa. Comece a corrida bem leve. Sinais de excesso: sono piorando, dores que não passam, cargas caindo, cansaço que não sai.</div>
+  </div>
 </section>
 
 <!-- ========== 02: DIÁRIO DE TREINO ========== -->
 <section id="analise">
-  <div class="sechead"><span class="secnum">02</span><h2>Diário de Treino</h2></div>
+  <div class="sechead">
+    <span class="secnum">02</span>
+    <h2>Diário de Treino</h2>
+  </div>
   <p class="lead">Escreva suas percepções, selecione tags e salve. Você pode editar ou deletar qualquer registro a qualquer momento.</p>
 
   <div class="card diary-form">
@@ -106,29 +118,36 @@
   <div id="diary-feed" class="diary-feed"></div>
 </section>
 
-<!-- ========== 03: TREINO (COM BOTÃO + ADICIONAR, EDITAR E DELETAR) ========== -->
+<!-- ========== 03: TREINO (COM BADGES RESTAURADAS E CONTROLE DE EDIÇÃO) ========== -->
 <section id="treino">
-  <div class="sechead"><span class="secnum">03</span><h2>O treino</h2></div>
-  <p class="lead">Toque em <b>+ Adicionar</b> para criar exercícios novos ou use os botões <b>✏️ Editar</b> e <b>🗑️ Deletar</b> diretamente nos cards.</p>
+  <div class="sechead">
+    <span class="secnum">03</span>
+    <h2>O treino</h2>
+  </div>
+  <p class="lead">Toque em <b>+ Adicionar</b> para criar exercícios ou use os botões <b>✏️ Editar</b> e <b>🗑️ Deletar</b> de cada card.</p>
 
-  <div class="card">
+  <!-- Caixa de Aquecimento & Descansos com Design e Badges Originais Restaurados -->
+  <div class="card" id="box-aquecimento-descanso">
+    <div class="card-header-bar">
+      <button class="sec-edit-btn" data-target="box-aquecimento-descanso">✏️ Editar Dicas</button>
+    </div>
     <div class="grid2">
       <div>
         <h3>🔥 Aquecimento — 5–8 min</h3>
-        <ul class="clean" contenteditable="true" data-edit-key="treino-aquecimento">
-          <li>3–5 min de bike leve</li>
-          <li>Séries de aproximação no 1º exercício de cada padrão: 50% × 10–12 → 70% × 6–8 → 85% × 3</li>
-          <li>Exercícios seguintes do mesmo músculo: 1 série leve</li>
-          <li>Alongamento estático: depois do treino ou à noite</li>
+        <ul class="clean">
+          <li><span data-edit-item="aq-1">3–5 min de bike leve</span></li>
+          <li><span data-edit-item="aq-2">Séries de aproximação <b>só no 1º exercício de cada padrão</b>: 50% × 10–12 → 70% × 6–8 → 85% × 3</span></li>
+          <li><span data-edit-item="aq-3">Exercícios seguintes do mesmo músculo: 1 série leve</span></li>
+          <li><span data-edit-item="aq-4">Alongamento estático: <b>depois</b> do treino ou à noite</span></li>
         </ul>
       </div>
       <div>
         <h3>⏳ Descansos</h3>
-        <ul class="clean" contenteditable="true" data-edit-key="treino-descanso">
-          <li><span class="p rest">2:00–2:30</span> compostos pesados</li>
-          <li><span class="p rest">1:30–2:00</span> máquinas e puxadas</li>
-          <li><span class="p rest">60–90s</span> isoladores e braços</li>
-          <li><span class="p rest">45–60s</span> abdômen</li>
+        <ul class="clean">
+          <li><span class="p rest" data-edit-item="desc-pill-1">2:00–2:30</span> <span data-edit-item="desc-txt-1">compostos pesados</span></li>
+          <li><span class="p rest" data-edit-item="desc-pill-2">1:30–2:00</span> <span data-edit-item="desc-txt-2">máquinas e puxadas</span></li>
+          <li><span class="p rest" data-edit-item="desc-pill-3">60–90s</span> <span data-edit-item="desc-txt-3">isoladores e braços</span></li>
+          <li><span class="p rest" data-edit-item="desc-pill-4">45–60s</span> <span data-edit-item="desc-txt-4">abdômen</span></li>
         </ul>
       </div>
     </div>
@@ -150,9 +169,9 @@
       <button class="addbtn" data-day="seg">+ Adicionar</button>
       <button class="resetbtn" data-day="seg">limpar</button>
     </div>
-    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <p class="hint">toque no card para marcar ✔ · clique em Editar no card para modificar</p>
     <div class="ex-list" id="ex-list-seg"></div>
-    <div class="abscard" contenteditable="true" data-edit-key="seg-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal remador 10–15 + Canivete alternado 10–12 · ~45s entre rodadas</div>
+    <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal remador 10–15 + Canivete alternado 10–12 · ~45s entre rodadas</div>
   </div>
 
   <!-- TERÇA -->
@@ -163,7 +182,7 @@
       <button class="addbtn" data-day="ter">+ Adicionar</button>
       <button class="resetbtn" data-day="ter">limpar</button>
     </div>
-    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <p class="hint">toque no card para marcar ✔ · clique em Editar no card para modificar</p>
     <div class="ex-list" id="ex-list-ter"></div>
   </div>
 
@@ -175,9 +194,9 @@
       <button class="addbtn" data-day="qua">+ Adicionar</button>
       <button class="resetbtn" data-day="qua">limpar</button>
     </div>
-    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <p class="hint">toque no card para marcar ✔ · clique em Editar no card para modificar</p>
     <div class="ex-list" id="ex-list-qua"></div>
-    <div class="abscard" contenteditable="true" data-edit-key="qua-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Supra no banco declinado 12–15 + Prancha 30–45s · ~45s entre rodadas</div>
+    <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Supra no banco declinado 12–15 + Prancha 30–45s · ~45s entre rodadas</div>
   </div>
 
   <!-- QUINTA -->
@@ -188,7 +207,7 @@
       <button class="addbtn" data-day="qui">+ Adicionar</button>
       <button class="resetbtn" data-day="qui">limpar</button>
     </div>
-    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <p class="hint">toque no card para marcar ✔ · clique em Editar no card para modificar</p>
     <div class="ex-list" id="ex-list-qui"></div>
   </div>
 
@@ -200,9 +219,9 @@
       <button class="addbtn" data-day="sex">+ Adicionar</button>
       <button class="resetbtn" data-day="sex">limpar</button>
     </div>
-    <p class="hint">toque no card para marcar ✔ · use os botões para editar ou remover</p>
+    <p class="hint">toque no card para marcar ✔ · clique em Editar no card para modificar</p>
     <div class="ex-list" id="ex-list-sex"></div>
-    <div class="abscard" contenteditable="true" data-edit-key="sex-abs"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal infra 12–15 + Lenhador na polia 10/lado · ~45s entre rodadas</div>
+    <div class="abscard"><b>🔥 Abdômen · supersérie · 3 rodadas · ~6 min</b>Abdominal infra 12–15 + Lenhador na polia 10/lado · ~45s entre rodadas</div>
   </div>
 
   <div class="card">
@@ -222,49 +241,61 @@
 
 <!-- ========== 04: PROGRESSÃO ========== -->
 <section id="progressao">
-  <div class="sechead"><span class="secnum">04</span><h2>Progressão</h2></div>
+  <div class="sechead">
+    <span class="secnum">04</span>
+    <h2>Progressão</h2>
+    <button class="sec-edit-btn" data-target="box-progressao">✏️ Editar</button>
+  </div>
   <p class="lead">Dupla progressão: sobe repetição primeiro, carga depois.</p>
-  <div class="card" contenteditable="true" data-edit-key="progressao-card">
+  <div class="card" id="box-progressao">
     <ul class="clean">
-      <li><b>1.</b> Escolha a carga que permita todas as séries no limite inferior da faixa (ex.: agachamento 4×6 com 80 kg)</li>
-      <li><b>2.</b> Semanas seguintes: suba as repetições com a mesma carga (4×7 → 4×8…)</li>
-      <li><b>3.</b> Ao bater o limite superior em todas as séries (4×10): +2,5–5% de carga e recomece do inferior</li>
-      <li><b>4.</b> Registre tudo. Sem registro não existe progressão — só achismo</li>
+      <li><span data-edit-item="prog-1"><b>1.</b> Escolha a carga que permita todas as séries no limite inferior da faixa (ex.: agachamento 4×6 com 80 kg)</span></li>
+      <li><span data-edit-item="prog-2"><b>2.</b> Semanas seguintes: suba as repetições com a mesma carga (4×7 → 4×8…)</span></li>
+      <li><span data-edit-item="prog-3"><b>3.</b> Ao bater o limite superior em todas as séries (4×10): +2,5–5% de carga e recomece do inferior</span></li>
+      <li><span data-edit-item="prog-4"><b>4.</b> Registre tudo. Sem registro não existe progressão — só achismo</span></li>
     </ul>
   </div>
 </section>
 
 <!-- ========== 05: DIETA ========== -->
 <section id="dieta">
-  <div class="sechead"><span class="secnum">05</span><h2>Dieta — metas calóricas</h2></div>
-  <p class="lead" contenteditable="true" data-edit-key="dieta-lead">Toque nos números para ajustar sua meta calórica e dados de TMB conforme evoluir.</p>
-  <div class="grid2">
+  <div class="sechead">
+    <span class="secnum">05</span>
+    <h2>Dieta — metas calóricas</h2>
+    <button class="sec-edit-btn" data-target="box-dieta">✏️ Editar</button>
+  </div>
+  <p class="lead">Acompanhe e ajuste seus números de manutenção e superávit.</p>
+  <div class="grid2" id="box-dieta">
     <div class="card">
       <h3>🧮 Seus números</h3>
-      <ul class="clean" contenteditable="true" data-edit-key="dieta-nums">
-        <li>TMB (Mifflin-St Jeor): <b>~1.760 kcal</b></li>
-        <li>Manutenção rotina ativa: <b>~2.800–3.000 kcal</b></li>
-        <li>Alvo semanal: <b>+0,2 a 0,25 kg/semana</b></li>
+      <ul class="clean">
+        <li>TMB (Mifflin-St Jeor): <b data-edit-item="dieta-tmb">~1.760 kcal</b></li>
+        <li>Manutenção rotina ativa: <b data-edit-item="dieta-manut">~2.800–3.000 kcal</b></li>
+        <li>Alvo semanal: <b data-edit-item="dieta-alvo">+0,2 a 0,25 kg/semana</b></li>
       </ul>
     </div>
     <div class="card">
       <h3>🎯 Meta diária</h3>
-      <p style="font-family:'Fraunces',Georgia,serif;font-size:2.3rem;font-weight:700;color:var(--green)" contenteditable="true" data-edit-key="dieta-meta-val">~3.000 kcal</p>
-      <p contenteditable="true" data-edit-key="dieta-meta-desc">Superávit de +150 a +250 kcal. Nos dias de vôlei e corrida, adicione carboidrato extra (~150–200 kcal).</p>
+      <p style="font-family:'Fraunces',Georgia,serif;font-size:2.3rem;font-weight:700;color:var(--green)" data-edit-item="dieta-meta-val">~3.000 kcal</p>
+      <p data-edit-item="dieta-meta-desc">Superávit de +150 a +250 kcal. Nos dias de vôlei e corrida, adicione carboidrato extra (~150–200 kcal).</p>
     </div>
   </div>
 </section>
 
 <!-- ========== 06: MACROS ========== -->
 <section id="macros">
-  <div class="sechead"><span class="secnum">06</span><h2>Macros diários</h2></div>
-  <div class="card">
+  <div class="sechead">
+    <span class="secnum">06</span>
+    <h2>Macros diários</h2>
+    <button class="sec-edit-btn" data-target="box-macros">✏️ Editar</button>
+  </div>
+  <div class="card" id="box-macros">
     <div class="macroflex">
-      <div class="donut"><div class="hole"><div><b contenteditable="true" data-edit-key="macro-kcal-hole">3.000</b><br><span>kcal/dia</span></div></div></div>
+      <div class="donut"><div class="hole"><div><b data-edit-item="macro-kcal-hole">3.000</b><br><span>kcal/dia</span></div></div></div>
       <div style="flex:1;min-width:250px">
-        <div class="mrow"><span><span class="dot" style="background:var(--green)"></span><b>Proteína</b> · 30–40 g/refeição</span><b contenteditable="true" data-edit-key="macro-prot-val">150–160 g</b></div>
-        <div class="mrow"><span><span class="dot" style="background:var(--terra)"></span><b>Carboidrato</b> · mais perto do treino</span><b contenteditable="true" data-edit-key="macro-carbo-val">~420 g</b></div>
-        <div class="mrow"><span><span class="dot" style="background:var(--amber)"></span><b>Gordura</b> · fonte boa</span><b contenteditable="true" data-edit-key="macro-fat-val">~75 g</b></div>
+        <div class="mrow"><span><span class="dot" style="background:var(--green)"></span><b>Proteína</b> · 30–40 g/refeição</span><b data-edit-item="macro-prot-val">150–160 g</b></div>
+        <div class="mrow"><span><span class="dot" style="background:var(--terra)"></span><b>Carboidrato</b> · mais perto do treino</span><b data-edit-item="macro-carbo-val">~420 g</b></div>
+        <div class="mrow"><span><span class="dot" style="background:var(--amber)"></span><b>Gordura</b> · fonte boa</span><b data-edit-item="macro-fat-val">~75 g</b></div>
       </div>
     </div>
   </div>
@@ -272,99 +303,117 @@
 
 <!-- ========== 07: CARDÁPIO ========== -->
 <section id="cardapio">
-  <div class="sechead"><span class="secnum">07</span><h2>Cardápio exemplo</h2></div>
-  <p class="lead">Toque em qualquer alimento para editar ou trocar ingredientes.</p>
-
-  <div class="meal">
-    <div class="mhead"><span class="emoji">☕</span><span class="mtitle" contenteditable="true" data-edit-key="meal1-title">Café da manhã</span><span class="p cal" contenteditable="true" data-edit-key="meal1-cal">~620 kcal · 25 g prot</span></div>
-    <div class="mbody" contenteditable="true" data-edit-key="meal1-body">
-      <p>Mingau: 250 ml de leite + 4 col. sopa de aveia + 1 banana + canela</p>
-      <p>2 ovos (cozidos ou omelete) · 1 fatia de pão integral com geleia</p>
-    </div>
+  <div class="sechead">
+    <span class="secnum">07</span>
+    <h2>Cardápio exemplo</h2>
+    <button class="sec-edit-btn" data-target="box-cardapio">✏️ Editar</button>
   </div>
+  <p class="lead">Altere suas refeições e calorias estimadas.</p>
 
-  <div class="meal">
-    <div class="mhead"><span class="emoji">🍚</span><span class="mtitle" contenteditable="true" data-edit-key="meal2-title">Almoço</span><span class="p cal" contenteditable="true" data-edit-key="meal2-cal">~800 kcal · 50 g prot</span></div>
-    <div class="mbody" contenteditable="true" data-edit-key="meal2-body">
-      <p>Arroz 200 g (~7 col. sopa) · feijão 1 concha grande</p>
-      <p>Frango grelhado 150–160 g (peso cozido) · salada à vontade + 1 col. sopa de azeite · 1 laranja</p>
+  <div id="box-cardapio">
+    <div class="meal">
+      <div class="mhead"><span class="emoji">☕</span><span class="mtitle" data-edit-item="meal1-title">Café da manhã</span><span class="p cal" data-edit-item="meal1-cal">~620 kcal · 25 g prot</span></div>
+      <div class="mbody">
+        <p data-edit-item="meal1-p1">Mingau: 250 ml de leite + 4 col. sopa de aveia + 1 banana + canela</p>
+        <p data-edit-item="meal1-p2">2 ovos (cozidos ou omelete) · 1 fatia de pão integral com geleia</p>
+      </div>
     </div>
-  </div>
 
-  <div class="meal">
-    <div class="mhead"><span class="emoji">🥤</span><span class="mtitle" contenteditable="true" data-edit-key="meal3-title">Lanche — pré/pós-treino</span><span class="p cal" contenteditable="true" data-edit-key="meal3-cal">~430 kcal · 16 g prot</span></div>
-    <div class="mbody" contenteditable="true" data-edit-key="meal3-body">
-      <p>Vitamina: 300 ml de leite + 1 banana + 2 col. sopa de aveia + 1 col. sopa de mel (ou pasta de amendoim)</p>
+    <div class="meal">
+      <div class="mhead"><span class="emoji">🍚</span><span class="mtitle" data-edit-item="meal2-title">Almoço</span><span class="p cal" data-edit-item="meal2-cal">~800 kcal · 50 g prot</span></div>
+      <div class="mbody">
+        <p data-edit-item="meal2-p1">Arroz 200 g (~7 col. sopa) · feijão 1 concha grande</p>
+        <p data-edit-item="meal2-p2">Frango grelhado 150–160 g (peso cozido) · salada à vontade + 1 col. sopa de azeite · 1 laranja</p>
+      </div>
     </div>
-  </div>
 
-  <div class="meal">
-    <div class="mhead"><span class="emoji">🍽️</span><span class="mtitle" contenteditable="true" data-edit-key="meal4-title">Jantar</span><span class="p cal" contenteditable="true" data-edit-key="meal4-cal">~770 kcal · 42 g prot</span></div>
-    <div class="mbody" contenteditable="true" data-edit-key="meal4-body">
-      <p>Arroz 200 g (ou macarrão 250 g cozido, ou batata-doce 250 g)</p>
-      <p>Carne magra 150 g (patinho, lombo ou tilápia) · legumes + salada + ½ col. azeite · 1 fatia de abacaxi</p>
+    <div class="meal">
+      <div class="mhead"><span class="emoji">🥤</span><span class="mtitle" data-edit-item="meal3-title">Lanche — pré/pós-treino</span><span class="p cal" data-edit-item="meal3-cal">~430 kcal · 16 g prot</span></div>
+      <div class="mbody">
+        <p data-edit-item="meal3-p1">Vitamina: 300 ml de leite + 1 banana + 2 col. sopa de aveia + 1 col. sopa de mel (ou pasta de amendoim)</p>
+      </div>
     </div>
-  </div>
 
-  <div class="meal">
-    <div class="mhead"><span class="emoji">🌙</span><span class="mtitle" contenteditable="true" data-edit-key="meal5-title">Ceia · com whey</span><span class="p cal" contenteditable="true" data-edit-key="meal5-cal">~380 kcal · 36 g prot</span></div>
-    <div class="mbody" contenteditable="true" data-edit-key="meal5-body">
-      <p>1 scoop de whey + iogurte natural 170 g + 2 col. sopa de granola + 1 fruta</p>
+    <div class="meal">
+      <div class="mhead"><span class="emoji">🍽️</span><span class="mtitle" data-edit-item="meal4-title">Jantar</span><span class="p cal" data-edit-item="meal4-cal">~770 kcal · 42 g prot</span></div>
+      <div class="mbody">
+        <p data-edit-item="meal4-p1">Arroz 200 g (ou macarrão 250 g cozido, ou batata-doce 250 g)</p>
+        <p data-edit-item="meal4-p2">Carne magra 150 g (patinho, lombo ou tilápia) · legumes + salada + ½ col. azeite · 1 fatia de abacaxi</p>
+      </div>
     </div>
-  </div>
 
-  <div class="meal">
-    <div class="mhead"><span class="emoji">🏐</span><span class="mtitle" contenteditable="true" data-edit-key="meal6-title">Extra — dias de vôlei e corrida</span><span class="p cal" contenteditable="true" data-edit-key="meal6-cal">+150–200 kcal</span></div>
-    <div class="mbody" contenteditable="true" data-edit-key="meal6-body">
-      <p>1 fruta + 1 pão com mel, ou 1 suco + 1 banana (seg, qua, sáb, dom)</p>
+    <div class="meal">
+      <div class="mhead"><span class="emoji">🌙</span><span class="mtitle" data-edit-item="meal5-title">Ceia · com whey</span><span class="p cal" data-edit-item="meal5-cal">~380 kcal · 36 g prot</span></div>
+      <div class="mbody">
+        <p data-edit-item="meal5-p1">1 scoop de whey + iogurte natural 170 g + 2 col. sopa de granola + 1 fruta</p>
+      </div>
+    </div>
+
+    <div class="meal">
+      <div class="mhead"><span class="emoji">🏐</span><span class="mtitle" data-edit-item="meal6-title">Extra — dias de vôlei e corrida</span><span class="p cal" data-edit-item="meal6-cal">+150–200 kcal</span></div>
+      <div class="mbody">
+        <p data-edit-item="meal6-p1">1 fruta + 1 pão com mel, ou 1 suco + 1 banana (seg, qua, sáb, dom)</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ========== 08: TROCAS ========== -->
 <section id="trocas">
-  <div class="sechead"><span class="secnum">08</span><h2>Substituições</h2></div>
-  <p class="lead">Toque em qualquer opção para personalizar seus alimentos equivalentes.</p>
-  
-  <div class="card">
-    <h3>🥩 Proteínas</h3>
-    <div class="swaps" contenteditable="true" data-edit-key="trocas-proteina">
-      <span class="opt">150–160 g frango</span><span class="arr">↔</span>
-      <span class="opt">150 g patinho</span><span class="arr">↔</span>
-      <span class="opt">150 g tilápia/atum</span><span class="arr">↔</span>
-      <span class="opt">130 g lombo suíno</span><span class="arr">↔</span>
-      <span class="opt">5 ovos</span><span class="arr">↔</span>
-      <span class="opt">1 scoop whey + 200 ml leite</span>
-    </div>
+  <div class="sechead">
+    <span class="secnum">08</span>
+    <h2>Substituições</h2>
+    <button class="sec-edit-btn" data-target="box-trocas">✏️ Editar</button>
   </div>
+  <p class="lead">Personalize seus alimentos equivalentes para trocar no dia a dia.</p>
+  
+  <div id="box-trocas">
+    <div class="card">
+      <h3>🥩 Proteínas</h3>
+      <div class="swaps">
+        <span class="opt" data-edit-item="tr-p-1">150–160 g frango</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-p-2">150 g patinho</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-p-3">150 g tilápia/atum</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-p-4">130 g lombo suíno</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-p-5">5 ovos</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-p-6">1 scoop whey + 200 ml leite</span>
+      </div>
+    </div>
 
-  <div class="card">
-    <h3>🍚 Carboidratos</h3>
-    <div class="swaps" contenteditable="true" data-edit-key="trocas-carbo">
-      <span class="opt">4 col. arroz</span><span class="arr">↔</span>
-      <span class="opt">1 pão francês</span><span class="arr">↔</span>
-      <span class="opt">2 fatias pão integral</span><span class="arr">↔</span>
-      <span class="opt">120 g batata-doce</span><span class="arr">↔</span>
-      <span class="opt">200 g batata inglesa</span><span class="arr">↔</span>
-      <span class="opt">5 col. macarrão cozido</span><span class="arr">↔</span>
-      <span class="opt">2 col. tapioca</span><span class="arr">↔</span>
-      <span class="opt">100 g cuscuz</span><span class="arr">↔</span>
-      <span class="opt">1 fruta média</span>
+    <div class="card">
+      <h3>🍚 Carboidratos</h3>
+      <div class="swaps">
+        <span class="opt" data-edit-item="tr-c-1">4 col. arroz</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-2">1 pão francês</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-3">2 fatias pão integral</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-4">120 g batata-doce</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-5">200 g batata inglesa</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-6">5 col. macarrão cozido</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-7">2 col. tapioca</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-8">100 g cuscuz</span><span class="arr">↔</span>
+        <span class="opt" data-edit-item="tr-c-9">1 fruta média</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ========== 09: ACOMPANHAMENTO ========== -->
 <section id="resultados">
-  <div class="sechead"><span class="secnum">09</span><h2>Acompanhamento</h2></div>
-  <p class="lead">Pese-se todo dia pela manhã e compare as médias semanais.</p>
-  <div class="decide" style="background:var(--green-soft);border-color:var(--green-line);color:var(--green-ink)" contenteditable="true" data-edit-key="decide-ok"><span class="ic">✅</span><div><b>Ganhando 0,2–0,3 kg/semana</b>Não mexa em nada. Está no ponto ideal.</div></div>
-  <div class="decide" style="background:var(--terra-soft);border-color:var(--terra-line);color:#7A3E20" contenteditable="true" data-edit-key="decide-down"><span class="ic">🔻</span><div><b>Ganhando &gt; 0,4 kg/semana</b>Reduza 150–200 kcal: tire ~40–50 g de carboidrato.</div></div>
-  <div class="decide" style="background:var(--amber-soft);border-color:var(--amber-line);color:#6E5518" contenteditable="true" data-edit-key="decide-up"><span class="ic">🔺</span><div><b>Ganhando &lt; 0,1 kg/semana</b>Aumente 150–200 kcal: adicione ~40–50 g de carboidrato.</div></div>
+  <div class="sechead">
+    <span class="secnum">09</span>
+    <h2>Acompanhamento</h2>
+    <button class="sec-edit-btn" data-target="box-resultados">✏️ Editar</button>
+  </div>
+  <p class="lead">Regras de ajuste calórico com base na balança semanal.</p>
+  <div id="box-resultados">
+    <div class="decide" style="background:var(--green-soft);border-color:var(--green-line);color:var(--green-ink)"><span class="ic">✅</span><div><b data-edit-item="dec-ok-t">Ganhando 0,2–0,3 kg/semana</b><span data-edit-item="dec-ok-d">Não mexa em nada. Está no ponto ideal.</span></div></div>
+    <div class="decide" style="background:var(--terra-soft);border-color:var(--terra-line);color:#7A3E20"><span class="ic">🔻</span><div><b data-edit-item="dec-down-t">Ganhando &gt; 0,4 kg/semana</b><span data-edit-item="dec-down-d">Reduza 150–200 kcal: tire ~40–50 g de carboidrato.</span></div></div>
+    <div class="decide" style="background:var(--amber-soft);border-color:var(--amber-line);color:#6E5518"><span class="ic">🔺</span><div><b data-edit-item="dec-up-t">Ganhando &lt; 0,1 kg/semana</b><span data-edit-item="dec-up-d">Aumente 150–200 kcal: adicione ~40–50 g de carboidrato.</span></div></div>
+  </div>
 </section>
 
 <footer>
-  <p contenteditable="true" data-edit-key="footer-resumo"><b>Em uma frase:</b> Full Body 5× (45–60 min) · ~3.000 kcal · 150–160 g de proteína · creatina todo dia · a média do peso manda nos ajustes.</p>
+  <p><b>Em uma frase:</b> Full Body 5× (45–60 min) · ~3.000 kcal · 150–160 g de proteína · creatina todo dia · a média do peso manda nos ajustes[cite: 1].</p>
 </footer>
 
 </main>

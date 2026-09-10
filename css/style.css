@@ -47,16 +47,19 @@ body {
   padding: 0 18px;
 }
 
-/* ---------- CAMPOS EDITÁVEIS & PLACEHOLDERS ---------- */
-[contenteditable="true"] {
-  outline: none;
-  border-radius: 4px;
-  transition: background 0.15s, box-shadow 0.15s;
+/* ---------- CONTROLE VISUAL DE EDIÇÃO ---------- */
+[contenteditable="false"] {
+  user-select: text;
 }
 
-[contenteditable="true"]:focus {
-  background: #FFFDF8;
-  box-shadow: 0 0 0 2px var(--green-line);
+/* Destaque visual apenas quando o elemento estiver em modo de edição ativo */
+.is-editing [data-edit-item],
+.ex.editing [data-field] {
+  background: #FFFDF8 !important;
+  box-shadow: 0 0 0 2px var(--green) !important;
+  border-radius: 6px;
+  padding: 2px 5px;
+  outline: none;
 }
 
 .exname:empty:before {
@@ -76,9 +79,38 @@ body {
 }
 
 .exnote:empty:before {
-  content: "Observações...";
+  content: "Observações do exercício...";
   color: var(--muted);
   font-style: italic;
+}
+
+/* Botão genérico de editar nas seções */
+.sec-edit-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: .72rem;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  touch-action: manipulation;
+  transition: all .15s;
+  margin-left: auto;
+  white-space: nowrap;
+}
+
+.sec-edit-btn:hover {
+  background: var(--card);
+  color: var(--ink);
+}
+
+.sec-edit-btn.saving {
+  background: var(--green) !important;
+  color: #fff !important;
+  border-color: var(--green) !important;
+  box-shadow: 0 2px 6px rgba(47,93,75,.25);
 }
 
 /* ---------- HEADER ---------- */
@@ -88,13 +120,19 @@ header {
   border-bottom: 1px solid var(--line);
 }
 
+.header-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
 .eyebrow {
   font-size: .7rem;
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--terra);
-  margin-bottom: 8px;
 }
 
 h1 {
@@ -191,7 +229,7 @@ section {
 
 .sechead {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 12px;
   margin-bottom: 4px;
 }
@@ -226,6 +264,12 @@ h2 {
   box-shadow: var(--shadow);
 }
 
+.card-header-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
 .card h3 {
   font-size: .95rem;
   font-weight: 700;
@@ -252,10 +296,14 @@ ul.clean {
 }
 
 ul.clean li {
-  padding: 3px 0 3px 20px;
+  padding: 4px 0 4px 20px;
   position: relative;
   font-size: .89rem;
   color: #4A5045;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 ul.clean li::before {
@@ -584,7 +632,7 @@ ul.clean li::before {
   color: var(--muted);
 }
 
-/* ---------- PILLS DOS CARDS ---------- */
+/* ---------- PILLS DOS CARDS E DESCANSOS ---------- */
 .pills {
   display: flex;
   gap: 6px;
@@ -595,34 +643,36 @@ ul.clean li::before {
 .p {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   font-size: .72rem;
   font-weight: 700;
   border-radius: 999px;
   padding: 4px 10px;
   letter-spacing: .02em;
   min-height: 24px;
+  line-height: 1;
 }
 
 .p.set {
-  background: var(--green-soft);
-  color: var(--green-ink);
+  background: var(--green-soft) !important;
+  color: var(--green-ink) !important;
   border: 1px solid var(--green-line);
 }
 
 .p.rest {
-  background: var(--amber-soft);
-  color: #6E5518;
+  background: var(--amber-soft) !important;
+  color: #6E5518 !important;
   border: 1px solid var(--amber-line);
 }
 
 .p.cal {
-  background: var(--terra-soft);
-  color: #7A3E20;
+  background: var(--terra-soft) !important;
+  color: #7A3E20 !important;
 }
 
 .p.ghost {
-  background: #F1EFE8;
-  color: var(--muted);
+  background: #F1EFE8 !important;
+  color: var(--muted) !important;
 }
 
 /* ---------- TREINO (03) ---------- */
@@ -711,7 +761,6 @@ ul.clean li::before {
   white-space: nowrap;
 }
 
-/* Botão + Adicionar no Daybar */
 .addbtn {
   background: var(--green);
   color: #fff;
@@ -809,7 +858,6 @@ ul.clean li::before {
   min-height: 22px;
 }
 
-/* Botões Editar / Deletar do Card de Treino */
 .ex-btns {
   display: flex;
   gap: 4px;

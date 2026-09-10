@@ -1,7 +1,10 @@
 const $$ = (s) => [...document.querySelectorAll(s)];
 
+// Remove chaves de texto corrompidas de versões antigas para restaurar o design original
+['plano3_inline:treino-descanso', 'plano3_inline:treino-aquecimento', 'plano3_inline:seg1-pills'].forEach(k => localStorage.removeItem(k));
+
 /* ----------------------------------------------------
-   1. BASE DE EXERCÍCIOS & LOCALSTORAGE DINÂMICO
+   1. EXERCÍCIOS BASE E LOCALSTORAGE DINÂMICO
 ---------------------------------------------------- */
 const DEFAULT_EXERCISES = {
   seg: [
@@ -41,7 +44,7 @@ const DEFAULT_EXERCISES = {
     { id: 'sex3', name: 'Desenvolvimento c/ halteres', sets: '4 × 8–12', rest: '⏱ 2:00', note: 'Antes: 2 séries leves de rotação de ombro na polia' },
     { id: 'sex4', name: 'Remada baixa c/ triângulo', sets: '3 × 8–12', rest: '⏱ 2:00', note: '1s de contração no encurtamento' },
     { id: 'sex5', name: 'Rosca direta (barra ou halteres)', sets: '3 × 10–12', rest: '⏱ 1:15', note: 'Sem balanço de tronco' },
-    { id: 'sex6', name: 'Panturrilha em pé no Smith', sets: '3 × 10–15', rest: '⏱ 1:00', note: '2–3s alongado embaixo, em cada repetição' }
+    { id: 'sex6', name: 'Panturrilha em pé no Smith', sets: '3 × 10–15', rest: '⏱ 1:00', note: '2–3s alongado embaixo' }
   ]
 };
 
@@ -91,17 +94,17 @@ function renderExercises(day) {
           <span class="cbox">✓</span>
           <div class="ex-info">
             <div class="ex-head-row">
-              <div class="exname" contenteditable="true" data-field="name">${ex.name}</div>
+              <div class="exname" contenteditable="false" data-field="name">${ex.name}</div>
               <div class="ex-btns">
-                <button type="button" class="ex-edit-btn" onclick="editExercise('${day}', '${ex.id}')">✏️ Editar</button>
+                <button type="button" class="ex-edit-btn" onclick="toggleEditExercise('${day}', '${ex.id}', this)">✏️ Editar</button>
                 <button type="button" class="ex-delete-btn" onclick="deleteExercise('${day}', '${ex.id}')">🗑️ Deletar</button>
               </div>
             </div>
             <div class="pills">
-              <span class="p set" contenteditable="true" data-field="sets">${ex.sets}</span>
-              <span class="p rest" contenteditable="true" data-field="rest">${ex.rest}</span>
+              <span class="p set" contenteditable="false" data-field="sets">${ex.sets}</span>
+              <span class="p rest" contenteditable="false" data-field="rest">${ex.rest}</span>
             </div>
-            <div class="exnote" contenteditable="true" data-field="note">${ex.note}</div>
+            <div class="exnote" contenteditable="false" data-field="note">${ex.note}</div>
             <div class="ex-inputs">
               <div class="input-box">
                 <input type="number" inputmode="decimal" class="track-val" data-key="${ex.id}-kg" placeholder="—" value="${kgVal}">
@@ -127,11 +130,11 @@ function attachCardEvents(day) {
   const container = document.getElementById('ex-list-' + day);
   if (!container) return;
 
-  // Marcar card como concluído
+  // Clique no card marca/desmarca — ignorado se estiver em modo de edição
   container.querySelectorAll('.ex').forEach((card) => {
     card.addEventListener('click', (e) => {
       if (
-        e.target.closest('[contenteditable="true"]') ||
+        card.classList.contains('editing') ||
         e.target.closest('.ex-inputs') ||
         e.target.closest('.ex-btns')
       ) {
@@ -141,21 +144,6 @@ function attachCardEvents(day) {
       const isDone = card.classList.contains('done');
       localStorage.setItem('plano3:' + card.dataset.id, isDone ? '1' : '0');
       update(day);
-    });
-  });
-
-  // Salvar edições de texto direto nos cards
-  container.querySelectorAll('[contenteditable="true"]').forEach((field) => {
-    field.addEventListener('click', (e) => e.stopPropagation());
-    field.addEventListener('blur', () => {
-      const card = field.closest('.ex');
-      const id = card.dataset.id;
-      const keyName = field.dataset.field;
-      const target = exercisesState[day].find((x) => x.id === id);
-      if (target) {
-        target[keyName] = field.innerText.trim();
-        saveExercisesData(exercisesState);
-      }
     });
   });
 
@@ -178,6 +166,43 @@ function update(day) {
   if (txt) txt.textContent = done + '/' + all.length;
 }
 
+// Botão Editar/Salvar do Card individual
+window.toggleEditExercise = function (day, id, btn) {
+  const card = document.querySelector(`.ex[data-id="${id}"]`);
+  if (!card) return;
+
+  const isEditing = card.classList.contains('editing');
+  const fields = card.querySelectorAll('[data-field]');
+
+  if (!isEditing) {
+    // Entra em modo de edição
+    card.classList.add('editing');
+    btn.textContent = '💾 Salvar';
+    btn.style.color = 'var(--green)';
+    btn.style.fontWeight = '800';
+
+    fields.forEach((f) => {
+      f.contentEditable = 'true';
+    });
+    const nameEl = card.querySelector('[data-field="name"]');
+    if (nameEl) nameEl.focus();
+  } else {
+    // Salva alterações
+    const target = exercisesState[day].find((x) => x.id === id);
+    if (target) {
+      fields.forEach((f) => {
+        target[f.dataset.field] = f.innerText.trim();
+        f.contentEditable = 'false';
+      });
+      saveExercisesData(exercisesState);
+    }
+    card.classList.remove('editing');
+    btn.textContent = '✏️ Editar';
+    btn.style.color = '';
+    btn.style.fontWeight = '';
+  }
+};
+
 // Botão + Adicionar Card Limpo
 $$('.addbtn').forEach((btn) => {
   btn.addEventListener('click', () => {
@@ -194,30 +219,18 @@ $$('.addbtn').forEach((btn) => {
     saveExercisesData(exercisesState);
     renderExercises(day);
 
-    // Foca imediatamente no nome do novo exercício adicionado
+    // Inicia o card já em modo de edição
     setTimeout(() => {
-      const newCard = document.querySelector(`.ex[data-id="${newEx.id}"] .exname`);
-      if (newCard) newCard.focus();
+      const newCard = document.querySelector(`.ex[data-id="${newEx.id}"]`);
+      if (newCard) {
+        const editBtn = newCard.querySelector('.ex-edit-btn');
+        if (editBtn) window.toggleEditExercise(day, newEx.id, editBtn);
+      }
     }, 60);
   });
 });
 
-// Botão Editar do Card
-window.editExercise = function (day, id) {
-  const card = document.querySelector(`.ex[data-id="${id}"]`);
-  if (!card) return;
-  const nameEl = card.querySelector('.exname');
-  if (nameEl) {
-    nameEl.focus();
-    const range = document.createRange();
-    range.selectNodeContents(nameEl);
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-  }
-};
-
-// Botão Deletar do Card
+// Botão Deletar Card
 window.deleteExercise = function (day, id) {
   if (!confirm('Deseja excluir este exercício?')) return;
   exercisesState[day] = exercisesState[day].filter((x) => x.id !== id);
@@ -241,20 +254,49 @@ $$('.resetbtn').forEach((b) => {
   });
 });
 
-// Renderização inicial de todos os dias da semana
+// Renderização inicial
 ['seg', 'ter', 'qua', 'qui', 'sex'].forEach(renderExercises);
 
 /* ----------------------------------------------------
-   4. SISTEMA UNIVERSAL DE EDIÇÃO INLINE (LOCALSTORAGE)
+   4. SISTEMA DE EDIÇÃO DE SEÇÕES COM BOTÃO "EDITAR"
 ---------------------------------------------------- */
-$$('[data-edit-key]').forEach((el) => {
-  const storageKey = 'plano3_inline:' + el.dataset.editKey;
-  const savedText = localStorage.getItem(storageKey);
-  if (savedText !== null) el.innerText = savedText;
+// Carrega dados salvos anteriormente
+$$('[data-edit-item]').forEach((el) => {
+  const key = el.dataset.editItem;
+  const saved = localStorage.getItem('plano3_block:' + key);
+  if (saved !== null) {
+    el.innerText = saved;
+  }
+});
 
-  el.addEventListener('click', (e) => e.stopPropagation());
-  el.addEventListener('blur', () => {
-    localStorage.setItem(storageKey, el.innerText.trim());
+// Evento dos botões ✏️ Editar / 💾 Salvar das Seções
+$$('.sec-edit-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    const targetContainer = document.getElementById(btn.dataset.target);
+    if (!targetContainer) return;
+
+    const isEditing = targetContainer.classList.contains('is-editing');
+    const items = targetContainer.querySelectorAll('[data-edit-item]');
+
+    if (!isEditing) {
+      // Ativa modo de edição na seção
+      targetContainer.classList.add('is-editing');
+      btn.classList.add('saving');
+      btn.textContent = '💾 Salvar';
+      items.forEach((item) => {
+        item.contentEditable = 'true';
+      });
+      if (items.length > 0) items[0].focus();
+    } else {
+      // Salva dados e trava novamente
+      items.forEach((item) => {
+        item.contentEditable = 'false';
+        localStorage.setItem('plano3_block:' + item.dataset.editItem, item.innerText.trim());
+      });
+      targetContainer.classList.remove('is-editing');
+      btn.classList.remove('saving');
+      btn.textContent = '✏️ Editar';
+    }
   });
 });
 
